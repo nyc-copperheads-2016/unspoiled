@@ -183,7 +183,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  byebug
+  byebug (~> 8.2.1)
   capybara
   factory_girl_rails
   faker
