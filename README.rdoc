@@ -1,9 +1,12 @@
-== README
+== Keep your browser Unspoiled...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Unspoiled is a google extension that blocks all narrative outcome references to movies, tv shows, and sports games.
 
 Things you may want to cover:
+
+* Trello: https://trello.com/unspoiled
+
+* Project Members: Ryan Lesson, Arcangelo Petretta, Jack Huang, and Eliza Dunaway 
 
 * Ruby version
 
