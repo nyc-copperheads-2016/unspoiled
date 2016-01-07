@@ -1,5 +1,7 @@
 == Keep your browser Unspoiled...
 
+Circle ci https://circleci.com/gh/nyc-copperheads-2016/unspoiled
+
 Unspoiled is a google extension that blocks all narrative outcome references to movies, tv shows, and sports games.
 
 Things you may want to cover:
