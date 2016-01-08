@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    type {Faker::Commerce.color}
+    category_type {Faker::Commerce.color}
   end
 
   factory :media do

@@ -6,7 +6,7 @@ RSpec.describe Category, type: :model do
 
     context "Associations" do
       it {should have_many(:medias)}
-      it { should validate_presence_of(:type) }
+      it { should validate_presence_of(:category_type) }
     end
   end
 end
