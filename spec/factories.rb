@@ -1,14 +1,9 @@
 FactoryGirl.define do
 
   factory :user do
-    username {Faker::Internet.user_name}
+    username {Faker::Internet.user_name(min_length=8)}
     password 'password'
     email {Faker::Internet.email}
-
-    after(:build) do |user|
-      {:username, :password, :email}.each do |profile|
-        user.profile << FactoryGirl.build(:profile,
-
   end
 
   factory :category do
