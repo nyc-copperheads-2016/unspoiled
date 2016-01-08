@@ -1,6 +1,6 @@
 class MediaController < ApplicationController
   def index
-    @medias = Media.where(params[:category_id])
+    @medias = Media.where(category_id: params[:category_id])
   end
 
 end
