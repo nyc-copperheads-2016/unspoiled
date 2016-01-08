@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :preferences
-  has_many :filters, :through :preference, source: 'media'
+  has_many :filters, through: :preference, source: 'media'
 
   validates :username, :password, :email, :active, presence: true
   validates_uniqueness_of :username, :email

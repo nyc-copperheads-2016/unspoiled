@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Media, type: :model do
 
   describe Media do
-    let(:media){Media.new}
+    let(:media) {Media.new}
 
     context "Associations" do
       it {should belong_to(:category)}
@@ -13,7 +13,7 @@ RSpec.describe Media, type: :model do
     context "Validations" do
 
 
-      media.should validate_presence_of(:title)
+      it {media.should validate_presence_of(:title)}
     end
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe Category, type: :model do
    describe Category do
 
     context "Associations" do
-      it {should belong_to(:media)}
+      it {should have_many(:medias)}
     end
   end
 end

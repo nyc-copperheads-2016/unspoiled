@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Preferences, type: :model do
+RSpec.describe Preference, type: :model do
 
-  describe Preferences do
+  describe Preference do
 
     context "Associations" do
       it {should belong_to (:user)}
