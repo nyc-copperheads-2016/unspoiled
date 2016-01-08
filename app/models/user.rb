@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_secure_password
+
   has_many :preferences
   has_many :filters, through: :preference, source: 'media'
 
