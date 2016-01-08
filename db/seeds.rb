@@ -10,7 +10,7 @@
 FactoryGirl.create(:user)
 
 
-5.time do
+5.times do
   FactoryGirl.create(:category)
   FactoryGirl.create(:media)
   FactoryGirl.create(:preference)
