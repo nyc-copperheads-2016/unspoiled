@@ -10,7 +10,7 @@ RSpec.describe Media, type: :model do
     end
 
     context "Validations" do
-      it { should validate_presence_of(:type) }
+      it { should validate_presence_of(:title) }
 
     end
   end
