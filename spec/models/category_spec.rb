@@ -1,6 +1,6 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe Category, type: :model do
+RSpec.describe Category, type: :model do
 
    describe Category do
 
@@ -8,7 +8,4 @@ Rspec.describe Category, type: :model do
       it {should belong_to(:media)}
     end
   end
-
-
-
 end

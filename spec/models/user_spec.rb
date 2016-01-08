@@ -1,16 +1,11 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe User, type: :model do
+RSpec.describe User, type: :model do
 
-   describe Preferences do
+   describe User do
 
     context "Associations" do
       it {should have_many(:preferences)}
     end
   end
-
-
-
-
-
 end

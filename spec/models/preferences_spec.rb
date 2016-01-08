@@ -1,6 +1,6 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe Preferences, type: :model do
+RSpec.describe Preferences, type: :model do
 
   describe Preferences do
 
@@ -9,9 +9,4 @@ Rspec.describe Preferences, type: :model do
       it {should belong_to (:media)}
     end
   end
-
-
-
-
-
 end

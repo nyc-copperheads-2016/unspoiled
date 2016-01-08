@@ -1,8 +1,9 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe Media, type: :model do
+RSpec.describe Media, type: :model do
 
-   describe Preferences do
+  describe Media do
+    let(:media){Media.new}
 
     context "Associations" do
       it {should belong_to(:category)}
@@ -10,13 +11,9 @@ Rspec.describe Media, type: :model do
     end
 
     context "Validations" do
-      let(:media){Media.new}
+
 
       media.should validate_presence_of(:title)
+    end
   end
-
-
-
-
-
 end
