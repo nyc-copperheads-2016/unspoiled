@@ -1,2 +1,12 @@
-show.html.erb
-gi
+<% if logged_in? && current_user.id == params[:id].to_i %>
+    <div id= "username-container">
+      <h2><span><%= @user.username %>'s profile</span></h2>
+    </div>
+    <%= render "users/preferences" %>
+  <% else %>
+    <div id="login-warning">
+      <p>This isn't your profile!</p>
+
+    </div>
+<% end %>
+
