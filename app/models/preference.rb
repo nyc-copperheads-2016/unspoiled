@@ -6,7 +6,7 @@ class Preference < ActiveRecord::Base
 
 
   def on_or_off
-    if self.active == true
+    if active == true
       "on"
     else
       "off"
