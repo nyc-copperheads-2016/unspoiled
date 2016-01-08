@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email
   validates :username, length: { minimum: 4 }
   validates :password, length: { minimum: 6 }
-  validates_presence_of :password_confirmation
+
   validates :email, :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 end
