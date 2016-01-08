@@ -3,6 +3,9 @@
 <ul>
   <% @medias.each do |media| %>
     <li><%= media.title %></li> 
-    <!-- need to add in create preferences link here -->
+    <%= form_for :preference, user_preferences_path(current_user.id) do |t| %>
+      <% t.hidden_field :media_id, value: media.id %>
+      <%= t.submit 'Add to filter' %>
+    <%= end %>
   <% end %>
 </ul>
