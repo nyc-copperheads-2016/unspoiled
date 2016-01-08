@@ -25,6 +25,13 @@ describe UsersController do
         expect{post :create, attribs}.to change{User.count}.by(1)
       end
 
+      it "redirects to root_path" do
+        attribs = { user: FactoryGirl.attributes_for(:user) }
+          post :create,
+            user: FactoryGirl.attributes_for(:user)
+          expect(response).to redirect_to root_path
+      end
+
      end
 
      context "with invalid attributes" do
@@ -32,6 +39,14 @@ describe UsersController do
         attribs = {user: FactoryGirl.attributes_for(:user, password:nil)}
         expect{post :create, attribs}.not_to change{User.count}
       end
+
+      it "re-renders the :new template" do
+        post :create,
+          user: FactoryGirl.attributes_for(:user, password:nil)
+        expect(response).to render_template :new
+      end
+
+
      end
 
 
