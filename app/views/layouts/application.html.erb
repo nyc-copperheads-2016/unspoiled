@@ -6,7 +6,13 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-
+<% if current_user %>
+  Welcome <%= current_user.username %>
+    <%= link_to 'Logout', logout_path(current_user.id), method: "delete" %>
+  <% else %>
+    <%= render "sessions/new" %>
+    <%= link_to "Create Account", new_user_path %>
+<% end %>
 <body>
 
 <%= yield %>

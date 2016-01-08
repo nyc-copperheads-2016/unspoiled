@@ -1,0 +1,17 @@
+<div id="user-create-form">
+  <%= form_for :user, url: '/users' do |t| %>
+    <%= t.label :username %>
+    <%= t.text_field :username %>
+
+    <%= t.label :password %>
+    <%= t.password_field :password %>
+
+    <%= t.label :password_confirmation %>
+    <%= t.password_field :password_confirmation %>
+
+    <%= t.label :email %>
+    <%= t.text_field :email %>
+
+    <%= t.submit "create account" %>
+  <% end %>
+</div>
