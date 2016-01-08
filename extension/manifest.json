@@ -1,6 +1,5 @@
 {
   "manifest_version": 2,
-
   "name": "Unspoiled",
   "description": "Unspoiled is a browser extension that blocks narrative outcome of movies, TV shows, and sports games. Let's keep the stories we love unspoiled",
   "version": "1.0",
@@ -9,11 +8,15 @@
     "default_icon": "tempicon.png",
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "activeTab",
-    "http://*/*",
-    "http://*/",
-    "https://*/*",
-    "file:///*/*"
-  ]
+  "author": ["Arcangelo Petretta", "Jack Huang", "Ryan Lesson", "Eliza Dunaway" ],
+  "content_scripts": [
+        {
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+            ],
+        "js": ["jquery/jquery.min.js", "jquery/jqueryui.min.js", "content.js"],
+        "run_at": "document_end"
+        }
+    ]
 }
