@@ -1,0 +1,8 @@
+
+<div id='login-form'>
+  <%= form_tag login_path do %>
+    Username: <%= text_field_tag :username %>
+    Password: <%= password_field_tag :password %>
+    <%= submit_tag 'Login' %>
+  <% end %>
+</div>
