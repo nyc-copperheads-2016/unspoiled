@@ -2,7 +2,12 @@
   <h4><%= @user.username %>'s filters</h4>
   <% @user.preferences.each do |preference| %>
    <p>
-     <span><strong><%= preference.media.title %></strong>    status: <%= preference.active %> <%= link_to 'delete', user_preference_path(user_id: current_user.id, preference_id: preference.id), method: "delete" %></span>
+     <span>
+      <strong><%= preference.media.title %></strong>
+      status: <%= link_to preference.active, user_preference_path(current_user, preference.id), method: "put" %> <%= link_to 'delete', user_preference_path(current_user, preference.id), method: "delete" %></span>
    </p>
   <% end %>
+
+
+
 </div>
