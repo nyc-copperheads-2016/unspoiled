@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :user do
     username {Faker::Internet.user_name}
     password 'password'
-    email {Faker.Internet.email}
+    email {Faker::Internet.email}
   end
 
   factory :category do
@@ -16,7 +16,7 @@ FactoryGirl.define do
   end
 
 
-  factory :prefernce do
+  factory :preference do
     association :user
     association :media
   end

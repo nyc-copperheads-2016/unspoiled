@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
   has_many :medias
 
-  validates :type, presence: true
+  validates :media_type, presence: true
 end
