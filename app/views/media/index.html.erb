@@ -3,9 +3,9 @@
 <ul>
  <% if @medias %>
   <% @medias.each do |media| %>
-    <li><%= media.title %></li> 
+    <li><%= media.title %></li>
     <%= form_for :preference, url: user_preferences_path(current_user.id) do |t| %>
-      <% t.hidden_field :media_id, value: media.id %>
+      <%= t.hidden_field :media_id, value: media.id %>
       <%= t.submit 'Add to filter' %>
       <% end %>
     <% end %>

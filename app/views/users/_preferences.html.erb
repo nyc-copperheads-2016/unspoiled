@@ -1,0 +1,13 @@
+<div id="user-preferences">
+  <h4><%= @user.username %>'s filters</h4>
+  <% @user.preferences.each do |preference| %>
+   <p>
+     <span>
+      <strong><%= preference.media.title %></strong>
+      status: <%= link_to preference.on_or_off, user_preference_path(current_user, preference.id), method: "put" %> <%= link_to 'delete', user_preference_path(current_user, preference.id), method: "delete" %></span>
+   </p>
+  <% end %>
+
+
+
+</div>
