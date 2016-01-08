@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "Unspoiled",
+  "description": "Unspoiled is a browser extension that blocks narrative outcome of movies, TV shows, and sports games. Let's keep the stories we love unspoiled",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "tempicon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://*/",
+    "https://*/*"
+  ]
+}
