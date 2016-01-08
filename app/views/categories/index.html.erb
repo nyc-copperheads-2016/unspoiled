@@ -1,0 +1,6 @@
+<h1>Categories:</h1>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.type, category_media_path(category.id) %></li>
+  <% end %>
+</ul>
