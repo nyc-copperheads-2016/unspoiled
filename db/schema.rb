@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160108162120) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "media_type"
+    t.string   "category_type"
   end
 
   create_table "media", force: :cascade do |t|
