@@ -17,8 +17,22 @@ describe UsersController do
   end
 
   describe 'POST #create' do
+    before :each do
+      @admins = [
+        attributes_for(:admin),
+        attributes_for(:admin),
+        attributes_for(:admin)
+      ]
+    end
+
     context "with valid attributes" do
-      it "saves the new user in the database"
+      it "saves the new user in the database" do
+        expect{
+          post :create, user: attributes_for(:user,
+            admins_attributes: @admins)
+        }.to change(User, :count).by(1)
+      end
+
       it "redirects to root_path"
     end
   end
