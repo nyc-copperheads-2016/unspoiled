@@ -5,11 +5,6 @@ describe MediaController do
     @category_new = FactoryGirl.create(:category)
   end
   describe 'GET #index' do
-      category1 = Category.create(category_type: "Movie")
-      media1 = FactoryGirl.create(:media, title: "Smith", category_id: category1.id)
-      media2 = FactoryGirl.create(:media, title: "Jones", category_id: category1.id)
-      get :index, category_id: category1.id
-      expect(assigns(:medias)).to match_array([media1, media2])
 
     it "populates an array of media objects that belongs to a certain category" do
       media1 = FactoryGirl.create(:media, title: "Smith", category_id: @category_new.id)
