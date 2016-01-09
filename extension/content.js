@@ -4,3 +4,16 @@
 //   event.preventDefault();
 //   $('div').show();
 // })
+var loggedOn = false;
+
+function loggedIn() {
+
+}
+
+var divs = document.querySelectorAll('div')
+
+$.each(divs, function(key, index) {
+ if ($(index).html().match("This page was last modified on")) {
+  $(index).hide()
+ }
+}) 
