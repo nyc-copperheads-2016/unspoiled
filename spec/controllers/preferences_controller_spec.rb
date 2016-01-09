@@ -32,5 +32,5 @@ describe PreferencesController do
 
 end
 
-# mediaobj = Media.find(params[:preference][:media_id])
+
 

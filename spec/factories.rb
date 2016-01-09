@@ -15,7 +15,6 @@ FactoryGirl.define do
     association :category
   end
 
-
   factory :preference do
     association :user
     association :media
