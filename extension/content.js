@@ -17,3 +17,31 @@ function loggedIn() {
   })
 }
 
+var tags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
+var array_of_words = ["netflix", "streaming", "jon snow"]
+
+function findMatch(string) {
+  for (i in array_of_words) {
+    if (string.toLowerCase().indexOf(array_of_words[i]) != -1) {
+      return true
+    }
+  }
+}
+
+function hideWord(tags) {
+  $.each(tags, function(key, element) {
+    if (findMatch($(element).html())) {
+      // console.log($(element).html())
+      // $(element).css("background-color", "red")
+      // debugger
+      $(element).hide()
+      // $(element).html("SPOILER ALERT!!!")
+    }
+  })
+}
+
+$(document).ready(function() {
+  hideWord(tags)
+  // hideWord(spantags)
+  // hideWord(atags)
+})
