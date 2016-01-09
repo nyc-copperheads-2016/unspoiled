@@ -1,8 +1,12 @@
 class PreferencesController < ApplicationController
+  before_filter :authorize_user!
+
 
   def create
+
     mediaobj = Media.find(params[:preference][:media_id])
     preference = Preference.new(user: current_user, media: mediaobj)
+    binding.pry
     if preference.save
       redirect_to user_path(current_user.id)
     else
