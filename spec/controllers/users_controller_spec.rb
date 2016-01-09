@@ -13,12 +13,10 @@ describe UsersController do
       get :new
       expect(response).to render_template :new
     end
-
   end
 
   describe 'POST #create' do
 
-#Can't figure this one out!
      context "with valid attributes" do
       it "saves the new user in the database" do
         attribs = { user: FactoryGirl.attributes_for(:user) }
@@ -31,7 +29,6 @@ describe UsersController do
             user: FactoryGirl.attributes_for(:user)
           expect(response).to redirect_to root_path
       end
-
      end
 
      context "with invalid attributes" do
@@ -45,12 +42,7 @@ describe UsersController do
           user: FactoryGirl.attributes_for(:user, password:nil)
         expect(response).to render_template :new
       end
-
-
-     end
-
-
-      it "redirects to root_path"
+    end
   end
 
   describe 'Get #show' do
