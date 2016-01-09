@@ -15,4 +15,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def user_logged_in
+    render :json => current_user 
+  end
 end
