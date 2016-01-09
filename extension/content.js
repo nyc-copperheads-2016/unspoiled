@@ -14,6 +14,12 @@ function loggedIn() {
     else {
       sessionStorage.clear()
     }
+    if (data.active) {
+      chrome.storage.local.set({unspoiledOn: true})
+    }
+    else {
+      chrome.storage.local.set({unspoiledOn: false})
+    }
   })
 }
 
@@ -33,15 +39,27 @@ function hideWord(tags) {
     if (findMatch($(element).html())) {
       // console.log($(element).html())
       // $(element).css("background-color", "red")
-      // debugger
       $(element).hide()
       // $(element).html("SPOILER ALERT!!!")
     }
   })
 }
 
+
+
 $(document).ready(function() {
+<<<<<<< 3df4206a984fe8c664ae0124b2919e6589c9136e
   hideWord(tags)
   // hideWord(spantags)
   // hideWord(atags)
 })
+=======
+  loggedIn()
+  chrome.storage.local.get("unspoiledOn", function(obj) {
+    if (obj.unspoiledOn === true) {
+      hideWord(tags)
+    }
+  })
+
+})
+>>>>>>> store whether or not filter is active to local storage

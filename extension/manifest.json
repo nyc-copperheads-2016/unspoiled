@@ -8,6 +8,9 @@
     "default_icon": "tempicon.png",
     "default_popup": "popup.html"
   },
+  "permissions": [
+    "storage"
+  ],
   "author": ["Arcangelo Petretta", "Jack Huang", "Ryan Lesson", "Eliza Dunaway" ],
   "content_scripts": [
         {
