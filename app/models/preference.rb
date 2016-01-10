@@ -3,6 +3,7 @@ class Preference < ActiveRecord::Base
   belongs_to :media
 
   validates :user, :media, :active, presence: true
+  validates :media_id, :uniqueness => {:scope => :user}
 
 
   def on_or_off

@@ -8,7 +8,7 @@ var loggedOn = false;
 function loggedIn() {
   $.get("http://localhost:3000/user_logged_in", function(data) {
     if (data) {
-      sessionStorage.loggedIn = true 
+      sessionStorage.loggedIn = true
       console.log("User is logged in")
     }
     else {
@@ -16,10 +16,4 @@ function loggedIn() {
     }
   })
 }
-// var divs = document.querySelectorAll('div')
 
-// $.each(divs, function(key, index) {
-//  if ($(index).html().match("This page was last modified on")) {
-//   $(index).hide()
-//  }
-// }) 

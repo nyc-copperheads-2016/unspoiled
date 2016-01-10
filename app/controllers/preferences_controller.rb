@@ -8,7 +8,7 @@ class PreferencesController < ApplicationController
     if preference.save
       redirect_to user_path(current_user.id)
     else
-      @medias = Media.where(params[:preference][:media_id])
+      @medias = Media.where(category_id: params[:preference][:media_id])
       flash[:notice] = "Unable to add filter"
       render '/media/index'
     end

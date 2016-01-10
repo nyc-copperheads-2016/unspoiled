@@ -10,4 +10,13 @@ class User < ActiveRecord::Base
   validates :username, length: { minimum: 4 }
   validates :password, length: { minimum: 6 }
   validates :email, :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+
+  def on_or_off
+    if active == true
+      "on"
+    else
+      "off"
+    end
+  end
 end

@@ -10,6 +10,7 @@
 <% if current_user %>
   Welcome <%= link_to current_user.username, user_path(current_user) %>
     <%= link_to 'Logout', logout_path(current_user.id), method: "delete" %>
+    <h2>filter status: <%= link_to current_user.on_or_off, user_path(current_user), method: "put" %></h2>
   <% else %>
     <%= render "sessions/new" %>
     <%= link_to "Create Account", new_user_path %>

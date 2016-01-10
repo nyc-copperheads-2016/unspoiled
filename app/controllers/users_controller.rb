@@ -18,6 +18,17 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.active == true
+      @user.update_attribute(:active, false)
+      redirect_to root_path
+    else
+      @user.update_attribute(:active, true)
+      redirect_to root_path
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username,:password,:email)
