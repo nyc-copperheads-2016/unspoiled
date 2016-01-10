@@ -6,7 +6,15 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
 <h1><%= link_to "Unspoiled", root_path %></h1>
+
+  <ul class="nav nav-pills" role="tablist">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
 <% if current_user %>
   Welcome <%= link_to current_user.username, user_path(current_user) %>
     <%= link_to 'Logout', logout_path(current_user.id), method: "delete" %>
