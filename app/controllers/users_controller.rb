@@ -16,6 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    if request.xhr?
+      # binding.pry
+      render '/users/show', layout: false
+    else
+      redirect_to root_path
+    end
   end
 
   def update

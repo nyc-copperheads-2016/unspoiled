@@ -8,10 +8,21 @@ $(document).ready(function(){
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-      console.log("doesn't work")
+      console.log(error + "doesn't work")
     });
   })
-
+  $('#category').on('submit', '.filter',function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.action,
+      method: event.target.method,
+      data: $(this).serialize()
+    }).done(function(response){
+      $('#category').html(response)
+    }).fail(function(error){
+      console.log(error + "doesn't work")
+    })
+  });
 
 
 });
