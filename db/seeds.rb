@@ -9,9 +9,11 @@
 
 FactoryGirl.create(:user)
 
+Category.create(category_type: "Movies")
+Category.create(category_type: "T.V. Shows")
+Category.create(category_type: "Sports")
 
 5.times do
-  FactoryGirl.create(:category)
   FactoryGirl.create(:media)
   FactoryGirl.create(:preference)
 end
