@@ -6,7 +6,7 @@ class PreferencesController < ApplicationController
     mediaobj = Media.find_by(id: params[:preference][:media_id])
     preference = Preference.new(user: current_user, media: mediaobj)
     if preference.save
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else
       @medias = Media.where(category_id: params[:preference][:media_id])
       flash[:notice] = "Unable to add filter"
