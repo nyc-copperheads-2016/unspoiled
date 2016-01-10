@@ -1,27 +1,24 @@
-var movieSearch = function(movie){
-  var url = 'http://api.themoviedb.org/3/',
-      mode = 'search/movie?query=',
-      input = movie,
-      key = '&api_key=e0c6c7bded5055b146501304684b8f94';
+var Movie = function(id, title) {
+  this.url = 'http://api.themoviedb.org/3/'
+  this.id = id
+  this.mode = 'movie/' + this.id + '/credits?query='
+  this.title = title
+  this.key = '&api_key=e0c6c7bded5055b146501304684b8f94'
+  this.cast = []
+}
 
-    return $.get(url + mode + input + key).then(function(response){
+Movie.prototype.credits = function() {
+  var cast = this.cast
+  return $.get(this.url + this.mode + this.key).done(function(response){
+      response.cast.forEach(function(element){
+        cast.push(element.character, element.name)
+      })
+    }).done(function(response){
+      this.cast = cast;
+    })
+}
 
-    movieCredits(response.results[0].id,response.results[0].original_title);
-    });
-  };
-
-var tvSearch = function(tv){
- var url = 'http://api.themoviedb.org/3/',
-     mode = 'search/tv?query=',
-     input = tv,
-     key = '&api_key=e0c6c7bded5055b146501304684b8f94';
-
- return $.get(url + mode + input + key).then(function(response){
-    tvCredits(response.results[0].id,response.results[0].name);
-  })
- }
-
-
+<<<<<<< 588db04abe300db9faccc7cf5db0d008885dbdd3
 var movieCredits = function(id,title){
  var url = 'http://api.themoviedb.org/3/',
      mode = 'movie/' +id+ '/credits?query=',
@@ -36,20 +33,70 @@ var movieCredits = function(id,title){
   })
   debugger
  }
+=======
+Movie.prototype.search = function() {
+  var movie = this;
+  var cast = this.cast;
+  return $.get(this.url + this.mode + this.key).then(function(response){
+    return movie.credits();
+  });
+}
+// Movie.getCast = function(arr) {
+//   var cast = []
+//   arr.results.forEach(function(element){
+//     // debugger
+//     cast.push(element.character, element.name)
+//   })
+//   return cast
+// }
+
+Movie.findMovie = function(movieTitle) {
+  return $.get('http://api.themoviedb.org/3/search/movie?query=' + movieTitle + '&api_key=e0c6c7bded5055b146501304684b8f94')
+}
+>>>>>>> working oop to get filtered words for movies
 
 
-var tvCredits = function(id,title){
-  var url = 'http://api.themoviedb.org/3/',
-      mode = "tv/" + id + "/credits?query=",
-      key = '&api_key=e0c6c7bded5055b146501304684b8f94';
+////////////////////////////////////////////////
 
-  return $.get(url + mode + key).then(function(response){
-    var cast = [title]
-    response.cast.forEach(function(element){
-      cast.push(element.character, element.name)
-    });
-    return(cast)
+var Tv = function(id, title) {
+  this.url = 'http://api.themoviedb.org/3/'
+  this.id = id
+  this.title = title
+  this.mode = "tv/" + this.id + "/credits?query="
+  this.key = '&api_key=e0c6c7bded5055b146501304684b8f94'
+  this.cast = [title]
+}
+
+Tv.prototype.credits = function() {
+  var cast = this.cast
+    return $.get(this.url + this.mode + this.key).then(function(response){
+      response.cast.forEach(function(element){
+        cast.push(element.character, element.name)
+      });
+    }).done(function(response){
+      this.cast = cast;
   })
 }
 
+Tv.prototype.search = function() {
+  var tv = this
+   return $.get(this.url + this.mode + this.key).then(function(response){
+    return tv.credits();
+  })
+}
+
+// $(document).ready(function(){
+//   var movieOne = new Movie(744, "hello")
+//   var m1 = movieOne.search()
+//   m1.then(function(cast){
+//     // console.log(movieOne.cast)
+//     return movieOne.cast
+//   })
+//   var tvOne = new Tv(63639, "the-expanse")
+//   var searchTV = tvOne.search()
+//   searchTV.then(function(cast){
+//     // console.log(tvOne.cast)
+//     return tvOne.cast
+//   })
+// })
 
