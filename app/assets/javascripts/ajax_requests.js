@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $('li a').on('click', function(event){
+  $('.li a').on('click', function(event){
     event.preventDefault();
     $.ajax({
       url: event.target.href,
@@ -11,5 +11,7 @@ $(document).ready(function(){
       console.log("doesn't work")
     });
   })
+
+
 
 });
