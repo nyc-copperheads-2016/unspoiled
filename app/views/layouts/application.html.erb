@@ -16,11 +16,13 @@
         <div class="col-sm-3"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></div>
       </div>
   <% else %>
+
     <%= render "sessions/new" %>
     <div>
       <%= link_to "Create Account", new_user_path %>
     </div>
 <% end %>
+
 <body>
 
 <%= yield %>

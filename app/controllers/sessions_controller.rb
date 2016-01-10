@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      render :_new
+      redirect_to root_path, flash: {notice: "Invalid email or password"}
     end
   end
 
@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
   end
 
   def user_logged_in
-    render :json => current_user 
+    render :json => current_user
   end
 end
