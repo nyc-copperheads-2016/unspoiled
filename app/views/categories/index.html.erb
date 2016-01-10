@@ -3,10 +3,12 @@
   <ul class = "category">
     <% @categories.each do |category| %>
       <% if logged_in?%>
-        <li><%= link_to category.category_type, category_media_index_path(category.id) %></li>
+        <li class = "li"><%= link_to category.category_type, category_media_index_path(category.id) %></li>
       <% else %>
         <li><%= category.category_type %></li>
       <% end %>
     <% end %>
   </ul>
 </div>
+
+

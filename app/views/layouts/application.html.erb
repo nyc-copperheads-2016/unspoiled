@@ -8,7 +8,8 @@
 </head>
 <body>
 
-<h1><%= link_to "Unspoiled", root_path %></h1>
+<div id = "home">
+  <h1><%= link_to "Unspoiled", root_path %></h1>
 
 <% if logged_in? %>
  <div class= "row">
@@ -25,7 +26,7 @@
         <div class="col-sm-3"><%= link_to "my filters", user_path(current_user) %></div>
         <div class="col-sm-3"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></div>
       </div>
-  </div>
+</div>
 
   Welcome <%= link_to current_user.username, user_path(current_user) %>
     <%= link_to 'Logout', logout_path(current_user.id), method: "delete" %>
@@ -37,5 +38,6 @@
 
 <%= yield %>
 
+</div>
 </body>
 </html>
