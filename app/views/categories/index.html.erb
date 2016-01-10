@@ -1,6 +1,8 @@
-<h1>Categories:</h1>
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.category_type, category_media_index_path(category.id) %></li>
-  <% end %>
-</ul>
+<div id = "category">
+  <h1>Categories:</h1>
+  <ul class = "category">
+    <% @categories.each do |category| %>
+      <li><%= link_to category.category_type, category_media_index_path(category.id) %></li>
+    <% end %>
+  </ul>
+</div>

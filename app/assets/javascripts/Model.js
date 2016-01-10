@@ -27,14 +27,14 @@ var movieCredits = function(id,title){
      mode = 'movie/' +id+ '/credits?query=',
      input = "hello",
      key = '&api_key=e0c6c7bded5055b146501304684b8f94';
-
-  return $.get(url + mode + key).then(function(response){
-    var cast = [title]
+  var cast = [title]
+  return dog =  $.get(url + mode + key).then(function(response){
     response.cast.forEach(function(element){
       cast.push(element.character, element.name)
     });
-    return(cast)
+    return cast
   })
+  debugger
  }
 
 
