@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     if request.xhr?
-      # binding.pry
       render '/users/show', layout: false
     else
       redirect_to root_path
@@ -28,10 +27,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.active == true
       @user.update_attribute(:active, false)
-      redirect_to root_path
+      if request.xhr?
+        render partial: '/users/filterstatus', layout: false
+      else
+
+       redirect_to root_path
+      end
     else
       @user.update_attribute(:active, true)
-      redirect_to root_path
+      if request.xhr?
+        render partial: '/users/filterstatus', layout: false
+      else
+        redirect_to root_path
+      end
     end
   end
 
