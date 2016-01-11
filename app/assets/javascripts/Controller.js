@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.filter-form').on('submit', function(event) {
+  $('.filter').on('submit', function(event) {
     var movieName = $(event.target).serializeArray()[3].value.toLowerCase().split(' ').join('-')
     Movie.findMovie("top-gun").then(function(cast) {
       var movieObj = new Movie(cast.results[0].id, "top-gun")
