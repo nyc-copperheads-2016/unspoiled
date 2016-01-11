@@ -10,12 +10,11 @@
 
 <div id= "flash-message-container">
   <% if flash[:notice] %>
-    <p class='notice'><%=h flash[:notice] %></p>
+    <p class='notice'><%= flash[:notice] %></p>
+    <% end %>
 </div>
 
 <div id = "home">
-  <h1><%= link_to "Unspoiled", root_path %></h1>
-
 
   <% if logged_in? %>
    <div class= "row">
@@ -32,24 +31,8 @@
       <%= link_to "Login", new_session_path  %>
       <%= link_to "Create Account", new_user_path %>
   <% end %>
-</div>
-      <div class="row">
-        <div class="col-sm-3">filter status: <%= link_to current_user.on_or_off, user_path(current_user), method: "put" %></div>
-        <div class="col-sm-3"><%= link_to "my filters", user_path(current_user) %></div>
-        <div class="col-sm-3"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></div>
-      </div>
-</div>
-
-  Welcome <%= link_to current_user.username, user_path(current_user) %>
-    <%= link_to 'Logout', logout_path(current_user.id), method: "delete" %>
-    <h2>filter status: <%= link_to current_user.on_or_off, user_path(current_user), method: "put" %></h2>
-<% else %>
-    <%= link_to "Login", new_session_path  %>
-    <%= link_to "Create Account", new_user_path %>
-<% end %>
 
 <%= yield %>
 
-</div>
 </body>
 </html>
