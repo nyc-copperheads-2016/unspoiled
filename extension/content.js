@@ -22,16 +22,15 @@ function setFilter() {
     chrome.storage.local.set({filter: data});
     // loggedIn()
     // console.log("Filter set", data);
-    chrome.storage.local.get("filter",function(obj) {
+    chrome.storage.local.get(function(obj) {
       // console.log("callback: ", obj)
-      hideWord(allTags)
-      // if (sessionStorage.loggedIn === true){
+      if (sessionStorage.loggedIn === "true"){
         if (obj.unspoiledOn === true) {
           if (obj.filter) {
             hideWord(allTags)
           }
         }
-      // }
+      }
     })
   })
 }
@@ -67,7 +66,7 @@ function hideWord(tags) {
 
 $(document).ready(function() {
   chrome.storage.local.clear()
+  loggedIn()
   setFilter()
   // debugger
-  loggedIn()
 })
