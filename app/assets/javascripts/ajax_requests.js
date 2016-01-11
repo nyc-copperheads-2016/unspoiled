@@ -15,7 +15,6 @@ $(document).ready(function(){
   // });
 
   $('.new_preference').on('submit', function(event) {
-    debugger
     console.log("new_preference", event)
     event.preventDefault();
     var $form = $(event.target);
