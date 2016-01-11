@@ -19,15 +19,23 @@ function loggedIn() {
 
 function setFilter() {
   $.get("http://localhost:3000/filtered_words", function(data) {
-    var filtered_words = [];
-    data.forEach(function(element) {
-      filtered_words += element.words;
-    });
-    console.log("hello")
-    var words = filtered_words.split(' ')
-    chrome.storage.local.set({filter: words});
-    console.log("Filter set");
-  });
+    // var filtered_words = [];
+    // data.forEach(function(element) {
+    //   filtered_words += element;
+    // });
+    // console.log("hello")
+    // var words = filtered_words.split(' ')
+    chrome.storage.local.set({filter: data});
+    console.log("Filter set", data);
+    chrome.storage.local.get("filter",function(obj) {
+      console.log("callback: ", obj)
+      if (obj.unspoiledOn === true) {
+        if (obj.filter) {
+          hideWord(allTags)
+        }
+      }
+    })
+  })
 }
 
 var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
@@ -62,14 +70,9 @@ function hideWord(tags) {
 }
 
 $(document).ready(function() {
+  console.log("hello")
+  chrome.storage.local.clear()
   setFilter()
   loggedIn()
-  chrome.storage.local.get(function(obj) {
-    if (obj.unspoiledOn === true) {
-      if (obj.filter) {
-        hideWord(allTags)
-      }
-    }
-  })
 })
 
