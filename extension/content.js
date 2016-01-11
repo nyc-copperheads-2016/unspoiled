@@ -23,10 +23,10 @@ function setFilter() {
     data.forEach(function(element) {
       filtered_words += element.words;
     });
-    var words = filtered_words.split(' ').replace("[", "")
+    console.log("hello")
+    var words = filtered_words.split(' ')
     chrome.storage.local.set({filter: words});
     console.log("Filter set");
-    console.log(filtered_words)
   });
 }
 
@@ -34,6 +34,7 @@ var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, cap
 var array_of_words = ["netflix", "streaming", "jon snow"]
 // var array_of_words = []
 // chrome.storage.local.get("filter", function(obj) {
+//   debugger
 //   if (obj.filter) {
 //     array_of_words = obj.filter
 //   }
