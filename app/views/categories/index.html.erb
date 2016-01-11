@@ -10,7 +10,7 @@
         <div class="panel-body"><%= media.title %> <span id="user-feedback-<%= media.id %>"></span> </div>
           <div class="inline">
             <% if logged_in? %>
-              <%= form_for [current_user, @preference], data:{id: media.id }, :html => {:class => "filter"} do |t| %>
+              <%= form_for [current_user, @preference], :html => {:class => "new_preference"} do |t| %>
                 <%= t.hidden_field :media_id, value: media.id %>
                 <%= t.hidden_field :name, value: media.title %>
                 <%= t.submit 'Add to filter', class: "submit-btn"  %>

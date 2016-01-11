@@ -14,8 +14,8 @@ $(document).ready(function(){
   //   })
   // });
 
-  $('#new_preference').on('submit', function(event) {
-    console.log(event);
+  $('.new_preference').on('submit', function(event) {
+    console.log("new_preference", event)
     event.preventDefault();
     var $form = $(event.target);
     var id = $form.data('id');
@@ -28,7 +28,7 @@ $(document).ready(function(){
     }).done(function(response){
         swal({
           title: "Confirmed",
-          text: response.message +"has been added",
+          text: response.message +" has been added",
           showConfirmButton: true,
           allowOutsideClick: true,
           type: "success"
