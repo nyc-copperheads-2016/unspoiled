@@ -1,14 +1,12 @@
 <div id = "category">
   <h1>Categories:</h1>
-  <ul class = "category">
-    <% @categories.each do |category| %>
-      <% if logged_in?%>
-        <li class = "li"><%= link_to category.category_type, category_media_index_path(category.id) %></li>
-      <% else %>
-        <li><%= category.category_type %></li>
-      <% end %>
-    <% end %>
-  </ul>
+<div class="list-group">
+  <% @categories.each do |category| %>
+  <% if logged_in?%>
+    <button type="button" class="list-group-item"><%= link_to category.category_type, category_media_index_path(category.id) %></button>
+  <% else %>
+    <li><%= category.category_type %></li>
+  <% end %>
+  <% end %>
 </div>
-
 

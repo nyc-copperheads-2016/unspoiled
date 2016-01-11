@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
-  $('.li a').on('click', function(event){
+  $('.list-group-item a').on('click', function(event){
     event.preventDefault();
+
     $.ajax({
       url: event.target.href,
       method: 'GET'
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-       debugger
       console.log(error + "doesn't work")
     });
   })

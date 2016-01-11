@@ -14,3 +14,10 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home.scss";
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
