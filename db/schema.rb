@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20160111004419) do
   end
 
   create_table "words", force: :cascade do |t|
-    t.string   "words",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "word",          null: false
+    t.integer  "preference_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

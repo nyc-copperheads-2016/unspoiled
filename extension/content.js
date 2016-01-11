@@ -3,7 +3,6 @@ function loggedIn() {
   $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
-      console.log("User is logged in")
     }
     else {
       sessionStorage.clear()
@@ -18,6 +17,7 @@ function loggedIn() {
 }
 
 function setFilter() {
+
   $.get("https://serene-garden-3411.herokuapp.com/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
     // loggedIn()
@@ -28,6 +28,7 @@ function setFilter() {
       // if (sessionStorage.loggedIn === true){
         if (obj.unspoiledOn === true) {
           if (obj.filter) {
+            hideWord(allTags)
           }
         }
       // }
@@ -58,10 +59,8 @@ function findMatch(string) {
 function hideWord(tags) {
   $.each(tags, function(key, element) {
     if (findMatch($(element).html())) {
-      console.log($(element)[0])
-      // debugger
       $(element).hide()
-      // $(element).css("background-color", "red")
+      $(element).css("background-color", "red")
     }
   })
 }
