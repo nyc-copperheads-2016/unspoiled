@@ -65,7 +65,7 @@ function hideWord(tags) {
 }
 
 $(document).ready(function() {
-  chrome.storage.local.clear()
+  // chrome.storage.local.clear()
   loggedIn()
   setFilter()
   // debugger
