@@ -10,9 +10,15 @@
 <h1> <%= @category.category_type %> </h1>
 <h2>Titles:</h2>
 
-<div class="list-group">
  <% if @medias.any? %>
   <% @medias.each do |media| %>
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a href="http://localhost:3000/">Home</a></li>
+    <li><a class="active" href="#"><%= media.category.category_type %></a></li>
+  </ul>
+</div>
+<div class="list-group">
     <button type="button" class="list-group-item"><%= media.title %>
     <%= form_for @preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
 
