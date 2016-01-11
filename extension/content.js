@@ -1,6 +1,6 @@
 var loggedOn = false;
 function loggedIn() {
-  $.get("http://localhost:3000/user_logged_in", function(data) {
+  $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
       console.log("User is logged in")
@@ -18,7 +18,7 @@ function loggedIn() {
 }
 
 function setFilter() {
-  $.get("http://localhost:3000/filtered_words", function(data) {
+  $.get("https://serene-garden-3411.herokuapp.com/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
     // loggedIn()
     // console.log("Filter set", data);
@@ -35,7 +35,8 @@ function setFilter() {
   })
 }
 
-var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
+// var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
+var allTags = $("*").not("html").not("head").not("body").not("div")
 // var array_of_words = ["netflix", "streaming", "jon snow"]
 var array_of_words = []
 chrome.storage.local.get("filter", function(obj) {
@@ -57,7 +58,7 @@ function findMatch(string) {
 function hideWord(tags) {
   $.each(tags, function(key, element) {
     if (findMatch($(element).html())) {
-      console.log("spoiler")
+      console.log($(element)[0])
       // debugger
       $(element).hide()
       // $(element).css("background-color", "red")
