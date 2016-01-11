@@ -21,7 +21,8 @@ $(document).ready(function(){
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-      console.log(error + "doesn't work")
+      debugger
+      console.log("fail :(", error)
     })
   });
 
@@ -33,7 +34,7 @@ $(document).ready(function(){
     }).done(function(response){
       $('#filter-status').html(response);
     }).fail(function(error){
-      console.log(error + "doesn't work")
+      console.log("fail :(", error)
     })
   });
 
@@ -44,7 +45,7 @@ $(document).ready(function(){
     }).done(function(response){
       $('#category').html(response);
     }).fail(function(error){
-      console.log(error + "doesn't work")
+      console.log("fail :(", error)
     })
   })
 });
