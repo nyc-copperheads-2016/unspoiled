@@ -5,13 +5,12 @@ class PreferencesController < ApplicationController
   def create
     @mediaobj = Media.find_by(id: params[:preference][:media_id])
     @category = Category.find_by(id: @mediaobj.category_id )
+    @categories = Category.all
     @preference = Preference.new(user: current_user, media: @mediaobj)
     if @preference.save
-      redirect_to user_path(current_user.id)
+      render json: {message:'Added'}
     else
-      @medias = Media.where(category_id: @category.id)
-
-      render '/media/index', :layout =>false
+      render json: {message:'Failed to save'}, status: 422
     end
   end
 

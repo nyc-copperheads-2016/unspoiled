@@ -7,12 +7,17 @@
     </div>
       <div id="collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>" class="panel-collapse collapse">
       <% category.medias.each do |media| %>
-        <div class="panel-body"><%= media.title %></div>
+        <div class="panel-body"><%= media.title %> <span id="user-feedback-<%= media.id %>"></span> </div>
           <div class="inline">
-            <%= form_for :preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
+            <%= form_for [current_user, @preference], data:{id: media.id }, :html => {:class => "filter"} do |t| %>
               <%= t.hidden_field :media_id, value: media.id %>
               <%= t.hidden_field :name, value: media.title %>
               <%= t.submit 'Add to filter', class: "submit-btn"  %>
+              <% if @preference.errors.any? %>
+                <div class = "error-messages">
+                  <p>Username has already been taken<p>
+                </div>
+              <% end %>
       <% end %>
           </div>
       <% end %>
