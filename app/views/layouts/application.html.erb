@@ -14,8 +14,8 @@
         <div id = "filter-status" class="btn-group" role="group">
           <%= render partial: '/users/filterstatus' %>
         </div>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default"><%= link_to "my filters", user_path(current_user) %></button>
+        <div id = "my-filter" class="btn-group" role="group">
+          <%= render partial: '/users/myfilter' %>
         </div>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></button>

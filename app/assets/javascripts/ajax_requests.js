@@ -24,6 +24,7 @@ $(document).ready(function(){
       console.log(error + "doesn't work")
     })
   });
+
   $('#filter-status').on('click', 'a', function(event){
     event.preventDefault();
     $.ajax({
@@ -31,11 +32,21 @@ $(document).ready(function(){
       method: 'PUT'
     }).done(function(response){
       $('#filter-status').html(response);
-      console.log("response", response);
     }).fail(function(error){
+      console.log(error + "doesn't work")
     })
   });
 
+  $('#my-filter').on('click', 'a', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.href,
+    }).done(function(response){
+      $('#category').html(response);
+    }).fail(function(error){
+      console.log(error + "doesn't work")
+    })
+  })
 });
 
 
