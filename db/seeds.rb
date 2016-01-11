@@ -9,11 +9,17 @@
 
 FactoryGirl.create(:user)
 
-Category.create(category_type: "Movies")
-Category.create(category_type: "T.V. Shows")
-Category.create(category_type: "Sports")
+a = Category.create(category_type: "Movies")
+b = Category.create(category_type: "T.V. Shows")
 
-5.times do
-  FactoryGirl.create(:media)
-  FactoryGirl.create(:preference)
-end
+
+Media.create(title: "South Park",category_id: b.id )
+Media.create(title: "Game of Thrones", category_id: b.id)
+Media.create(title: "Walking Dead", category_id: b.id)
+
+Media.create(title: "Starwars", category_id: a.id)
+Media.create(title: "Top Gun", category_id: b.id)
+Media.create(title: "John Tucker Must Die!", category_id: b.id)
+
+
+
