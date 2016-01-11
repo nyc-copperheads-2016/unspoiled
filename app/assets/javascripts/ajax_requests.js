@@ -1,6 +1,4 @@
 $(document).ready(function(){
-
-<<<<<<< 5036a6dcb608b93ef622a2c920cbb411de4a1164
   $('.list-group-item a').on('click', function(event){
     event.preventDefault();
     event.preventDefault();

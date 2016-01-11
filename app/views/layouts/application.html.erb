@@ -11,8 +11,8 @@
     <div class="col-centered"><h3><%= link_to "Unspoiled", root_path %></h3></div>
     <% if current_user %>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default"><%= render partial: '/users/filterstatus' %></button>
+        <div id = "filter-status" class="btn-group" role="group">
+          <%= render partial: '/users/filterstatus' %>
         </div>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default"><%= link_to "my filters", user_path(current_user) %></button>

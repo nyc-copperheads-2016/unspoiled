@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20160111004419) do
     t.string   "category_type"
   end
 
-  create_table "filter_words", force: :cascade do |t|
-    t.string   "words",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "media", force: :cascade do |t|
     t.string   "title",       null: false
     t.integer  "category_id", null: false
