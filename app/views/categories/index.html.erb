@@ -1,12 +1,23 @@
 <div id = "category">
-  <h1>Categories:</h1>
-<div class="list-group">
-  <% @categories.each do |category| %>
-  <% if logged_in?%>
-    <button type="button" class="list-group-item"><%= link_to category.category_type, category_media_index_path(category.id) %></button>
-  <% else %>
-    <li><%= category.category_type %></li>
-  <% end %>
-  <% end %>
+<% @categories.each do |category| %>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <a class="panel-title" data-toggle="collapse" href="#collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>"><%= category.category_type %></a>
+    </div>
+      <div id="collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>" class="panel-collapse collapse">
+      <% category.medias.each do |media| %>
+        <div class="panel-body"><%= media.title %></div>
+          <div class="inline">
+            <%= form_for :preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
+              <%= t.hidden_field :media_id, value: media.id %>
+              <%= t.hidden_field :name, value: media.title %>
+              <%= t.submit 'Add to filter', class: "submit-btn"  %>
+      <% end %>
+          </div>
+      <% end %>
+      </div>
+<% end %>
+  </div>
 </div>
 
