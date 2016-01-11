@@ -1,6 +1,6 @@
 var loggedOn = false;
 function loggedIn() {
-  $.get("http://localhost:3000/user_logged_in", function(data) {
+  $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
       console.log("User is logged in")
@@ -18,35 +18,32 @@ function loggedIn() {
 }
 
 function setFilter() {
-  $.get("http://localhost:3000/filtered_words", function(data) {
-    // var filtered_words = [];
-    // data.forEach(function(element) {
-    //   filtered_words += element;
-    // });
-    // console.log("hello")
-    // var words = filtered_words.split(' ')
+  $.get("https://serene-garden-3411.herokuapp.com/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
-    console.log("Filter set", data);
+    // loggedIn()
+    // console.log("Filter set", data);
     chrome.storage.local.get("filter",function(obj) {
-      console.log("callback: ", obj)
-      if (obj.unspoiledOn === true) {
-        if (obj.filter) {
-          hideWord(allTags)
+      // console.log("callback: ", obj)
+      hideWord(allTags)
+      // if (sessionStorage.loggedIn === true){
+        if (obj.unspoiledOn === true) {
+          if (obj.filter) {
+          }
         }
-      }
+      // }
     })
   })
 }
 
-var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
-var array_of_words = ["netflix", "streaming", "jon snow"]
-// var array_of_words = []
-// chrome.storage.local.get("filter", function(obj) {
-//   debugger
-//   if (obj.filter) {
-//     array_of_words = obj.filter
-//   }
-// })
+// var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
+var allTags = $("*").not("html").not("head").not("body").not("div")
+// var array_of_words = ["netflix", "streaming", "jon snow"]
+var array_of_words = []
+chrome.storage.local.get("filter", function(obj) {
+  if (obj.filter) {
+    array_of_words = obj.filter
+  }
+})
 
 function findMatch(string) {
   var match = false
@@ -61,18 +58,17 @@ function findMatch(string) {
 function hideWord(tags) {
   $.each(tags, function(key, element) {
     if (findMatch($(element).html())) {
-      // console.log($(element).html())
-      // $(element).hide()
-      // $(element).html("SPOILER ALERT!!!")
-      $(element).css("background-color", "red")
+      console.log($(element)[0])
+      // debugger
+      $(element).hide()
+      // $(element).css("background-color", "red")
     }
   })
 }
 
 $(document).ready(function() {
-  console.log("hello")
   chrome.storage.local.clear()
   setFilter()
+  // debugger
   loggedIn()
 })
-
