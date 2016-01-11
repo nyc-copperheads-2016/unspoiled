@@ -12,7 +12,6 @@ Movie.prototype.credits = function() {
   var cast = this.cast
   return $.get('http://api.themoviedb.org/3/' + movie.mode + '&api_key=e0c6c7bded5055b146501304684b8f94')
   .done(function(response){
-  debugger
       response.cast.forEach(function(element){
         cast.push(element.character, element.name)
       })
@@ -33,7 +32,6 @@ var movieCredits = function(id,title){
     });
     return cast
   })
-  debugger
  }
 
 Movie.prototype.search = function() {

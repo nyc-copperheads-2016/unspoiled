@@ -31,13 +31,13 @@ function setFilter() {
 }
 
 var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
-// var array_of_words = ["netflix", "streaming", "jon snow"]
-var array_of_words = []
-chrome.storage.local.get("filter", function(obj) {
-  if (obj.filter) {
-    array_of_words = obj.filter
-  }
-})
+var array_of_words = ["netflix", "streaming", "jon snow"]
+// var array_of_words = []
+// chrome.storage.local.get("filter", function(obj) {
+//   if (obj.filter) {
+//     array_of_words = obj.filter
+//   }
+// })
 
 function findMatch(string) {
   var match = false
