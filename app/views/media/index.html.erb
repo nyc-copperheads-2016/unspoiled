@@ -5,8 +5,10 @@
   <% @medias.each do |media| %>
     <li><%= media.title %></li>
     <%= form_for :preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
+    <%= form_for :preference, url: user_preferences_path(current_user.id), html: { class: "filter-form" } do |t| %>
       <%= t.hidden_field :media_id, value: media.id %>
-      <%= t.submit 'Add to filter' %>
+      <%= t.hidden_field :name, value: media.title %>
+      <%= t.submit 'Add to filter', class: "submit-btn"  %>
       <% end %>
     <%end%>
  <% else %>
