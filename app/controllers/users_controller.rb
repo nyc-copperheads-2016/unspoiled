@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if request.xhr?
       render '/users/show', layout: false
     else
-      redirect_to root_path
+      render '/users/show'
     end
   end
 
