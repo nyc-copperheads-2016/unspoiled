@@ -21,8 +21,8 @@ $(document).ready(function(){
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-      debugger
       console.log("fail :(", error)
+        $(event.target).append("You have already applied this filer")
     })
   });
 
