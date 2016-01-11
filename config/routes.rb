@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :media, only: [:index, :create]
   end
   get '/user_logged_in', to: 'sessions#user_logged_in'
+  get '/filtered_words', to: 'media#filtered_words'
+  post '/filter_words', to: 'media#add_filter_words'
 end
