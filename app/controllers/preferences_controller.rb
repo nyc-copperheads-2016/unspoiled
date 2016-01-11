@@ -8,7 +8,7 @@ class PreferencesController < ApplicationController
     @categories = Category.all
     @preference = Preference.new(user: current_user, media: @mediaobj)
     if @preference.save
-      render json: {message:'Added'}
+      render json: {message:@mediaobj.title}
     else
       render json: {message:'Failed to save'}, status: 422
     end

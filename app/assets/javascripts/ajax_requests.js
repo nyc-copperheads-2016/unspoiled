@@ -26,12 +26,23 @@ $(document).ready(function(){
       dataType:'json',
       data: $form.serialize()
     }).done(function(response){
-      $(selector).html('Successfully added')
-    }).fail(function(response){
-      $(selector).html('Failed to add')
+        swal({
+          title: "Confirmed",
+          text: response.message +"has been added",
+          showConfirmButton: true,
+          allowOutsideClick: true,
+          type: "success"
+        });
+
+    }).fail(function(error){
+      swal({
+          title: "Error!",
+          text: "You already added this filter",
+          showConfirmButton: true,
+          allowOutsideClick: true,
+          type: "error"
+        });
     });
-
-
   });
 
   $('#filter-status').on('click', 'a', function(event){
