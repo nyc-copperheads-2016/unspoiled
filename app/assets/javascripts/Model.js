@@ -1,15 +1,18 @@
 var Movie = function(id, title) {
-  this.url = 'http://api.themoviedb.org/3/'
+  // this.url = 'http://api.themoviedb.org/3/'
   this.id = id
   this.mode = 'movie/' + this.id + '/credits?query='
   this.title = title
-  this.key = '&api_key=e0c6c7bded5055b146501304684b8f94'
+  // this.key = '&api_key=e0c6c7bded5055b146501304684b8f94'
   this.cast = []
 }
 
 Movie.prototype.credits = function() {
+  var movie = this
   var cast = this.cast
-  return $.get(this.url + this.mode + this.key).done(function(response){
+  return $.get('http://api.themoviedb.org/3/' + movie.mode + '&api_key=e0c6c7bded5055b146501304684b8f94')
+  .done(function(response){
+  debugger
       response.cast.forEach(function(element){
         cast.push(element.character, element.name)
       })
@@ -18,7 +21,6 @@ Movie.prototype.credits = function() {
     })
 }
 
-<<<<<<< 588db04abe300db9faccc7cf5db0d008885dbdd3
 var movieCredits = function(id,title){
  var url = 'http://api.themoviedb.org/3/',
      mode = 'movie/' +id+ '/credits?query=',
@@ -33,27 +35,19 @@ var movieCredits = function(id,title){
   })
   debugger
  }
-=======
+
 Movie.prototype.search = function() {
   var movie = this;
   var cast = this.cast;
-  return $.get(this.url + this.mode + this.key).then(function(response){
+  return $.get('http://api.themoviedb.org/3/' + this.mode + '&api_key=e0c6c7bded5055b146501304684b8f94')
+  .then(function(response){
     return movie.credits();
   });
 }
-// Movie.getCast = function(arr) {
-//   var cast = []
-//   arr.results.forEach(function(element){
-//     // debugger
-//     cast.push(element.character, element.name)
-//   })
-//   return cast
-// }
 
 Movie.findMovie = function(movieTitle) {
   return $.get('http://api.themoviedb.org/3/search/movie?query=' + movieTitle + '&api_key=e0c6c7bded5055b146501304684b8f94')
 }
->>>>>>> working oop to get filtered words for movies
 
 
 ////////////////////////////////////////////////

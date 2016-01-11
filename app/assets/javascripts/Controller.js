@@ -5,7 +5,11 @@ $(document).ready(function(){
       var movieObj = new Movie(cast.results[0].id, "top-gun")
       var getCast = movieObj.credits()
       getCast.then(function(){
-        movieObj.cast
+        return movieObj.cast
+        // debugger
+    })
+      .then(function() {
+      $.post("http://localhost:3000/filter_words", movieObj)
       })
     })
   })
