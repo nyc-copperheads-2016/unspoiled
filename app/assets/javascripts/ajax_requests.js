@@ -28,7 +28,7 @@ $(document).ready(function(){
     }).done(function(response){
         swal({
           title: "Confirmed",
-          text: response.message +"has been added",
+          text: response.message +" has been added",
           showConfirmButton: true,
           allowOutsideClick: true,
           type: "success"
