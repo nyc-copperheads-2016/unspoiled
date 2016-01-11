@@ -8,11 +8,7 @@
 </head>
 <body>
 
-<div id= "flash-message-container">
-  <% if flash[:notice] %>
-    <p class='notice'><%= flash[:notice] %></p>
-    <% end %>
-</div>
+
 
 <div id = "home">
 
@@ -31,6 +27,14 @@
       <%= link_to "Login", new_session_path  %>
       <%= link_to "Create Account", new_user_path %>
   <% end %>
+
+<div id= "flash-message-container">
+  <% flash.each do |name, msg| %>
+    <ul>
+      <li><%= content_tag :div, msg, class: name %></li>
+    <ul>
+  <% end %>
+</div>
 
 <%= yield %>
 

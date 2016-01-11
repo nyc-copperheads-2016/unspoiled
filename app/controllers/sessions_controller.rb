@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      render new_session_path , flash: {notice: "Invalid email or password"}
+      flash[:notice]= "Invalid email or password"
+      redirect_to '/sessions/new'
     end
   end
 
