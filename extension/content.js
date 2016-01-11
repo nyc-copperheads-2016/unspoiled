@@ -61,10 +61,6 @@ function hideWord(tags) {
 }
 
 $(document).ready(function() {
-  hideWord(tags)
-  // hideWord(spantags)
-  // hideWord(atags)
-})
   setFilter()
   loggedIn()
   chrome.storage.local.get(function(obj) {
@@ -74,4 +70,5 @@ $(document).ready(function() {
       }
     }
   })
+})
 
