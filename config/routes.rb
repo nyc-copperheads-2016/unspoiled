@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index] do
-    resources :media, only: [:index, :create]
+    resources :media, only: [:create]
   end
   get '/user_logged_in', to: 'sessions#user_logged_in'
   get '/filtered_words', to: 'users#filtered_words'
