@@ -1,6 +1,7 @@
 class Preference < ActiveRecord::Base
   belongs_to :user
   belongs_to :media
+  has_many :words
 
   validates :user, :media, :active, presence: true
   validates :media_id, :uniqueness => {:scope => :user}
