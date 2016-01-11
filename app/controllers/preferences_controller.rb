@@ -3,14 +3,15 @@ class PreferencesController < ApplicationController
 
 
   def create
-    mediaobj = Media.find_by(id: params[:preference][:media_id])
-    preference = Preference.new(user: current_user, media: mediaobj)
-    if preference.save
+    @mediaobj = Media.find_by(id: params[:preference][:media_id])
+    @category = Category.find_by(id: @mediaobj.category_id )
+    @preference = Preference.new(user: current_user, media: @mediaobj)
+    if @preference.save
       redirect_to user_path(current_user.id)
     else
-      @medias = Media.where(category_id: params[:preference][:media_id])
-      flash[:notice] = "Unable to add filter"
-      render '/media/index'
+      @medias = Media.where(category_id: @category.id)
+
+      render '/media/index', :layout =>false
     end
   end
 

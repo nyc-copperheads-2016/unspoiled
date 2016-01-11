@@ -1,15 +1,14 @@
 $(document).ready(function(){
-
   $('.list-group-item a').on('click', function(event){
     event.preventDefault();
-
+    event.preventDefault();
     $.ajax({
       url: event.target.href,
       method: 'GET'
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-      console.log(error + "doesn't work")
+      console.log("fail :(", error)
     });
   })
 
@@ -22,22 +21,34 @@ $(document).ready(function(){
     }).done(function(response){
       $('#category').html(response)
     }).fail(function(error){
-      console.log(error + "doesn't work")
+      console.log("fail :(", error)
+        $(event.target).append("You have already applied this filer")
     })
   });
+
+  $('#filter-status').on('click', 'a', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.href,
+      method: 'PUT'
+    }).done(function(response){
+      $('#filter-status').html(response);
+    }).fail(function(error){
+      console.log("fail :(", error)
+    })
+  });
+
+  $('#my-filter').on('click', 'a', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.href,
+    }).done(function(response){
+      $('#category').html(response);
+    }).fail(function(error){
+      console.log("fail :(", error)
+    })
+  })
 });
 
 
 
-  //filter status
-  // $('#filter-status a').on('click', function(event){
-  //   event.preventDefault();
-  //   $.ajax({
-  //     url: event.target.href,
-  //     method: 'PUT'
-  //   }).done(function(response){
-  //     $('#filter-status').html(response);
-  //   }).fail(function(error){
-  //     console.log(error + "doesn't work");
-  //   });
-  // });

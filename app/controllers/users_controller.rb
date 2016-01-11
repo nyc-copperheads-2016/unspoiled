@@ -24,13 +24,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    #binding.pry
     @user = User.find(params[:id])
     if @user.active == true
       @user.update_attribute(:active, false)
       if request.xhr?
         render partial: '/users/filterstatus', layout: false
       else
-
        redirect_to root_path
       end
     else

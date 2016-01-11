@@ -1,15 +1,32 @@
-<h1>Titles:</h1>
+<div id= "flash-message-container">
+  <% flash.each do |name, msg| %>
+    <ul>
+      <li><%= content_tag :div, msg, class: name %></li>
+    <ul>
+  <% end %>
+</div>
+
+
+<h1> <%= @category.category_type %> </h1>
+<h2>Titles:</h2>
 
 <div class="list-group">
  <% if @medias.any? %>
   <% @medias.each do |media| %>
     <button type="button" class="list-group-item"><%= media.title %>
-    <%= form_for :preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
+    <%= form_for @preference, :html => {:class => "filter"}, url: user_preferences_path(current_user.id) do |t| %>
+
       <%= t.hidden_field :media_id, value: media.id %>
       <%= t.hidden_field :name, value: media.title %>
       <%= t.submit 'Add to filter', class: "submit-btn"  %>
+      <div class = "error messages"<% if @preference.errors.any? %>
+          <span id="error_explanation">
+            <p> Username has already been taken</p>
+          </span>
+        </div>
+        <% end %>
       <% end %>
-    <%end%>
+    <% end %>
     </button>
  <% else %>
       <p>There is no media here</p>

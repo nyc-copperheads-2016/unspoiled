@@ -7,14 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
     <div class="col-centered"><h3><%= link_to "Unspoiled", root_path %></h3></div>
     <% if current_user %>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">filter status: <%= link_to current_user.on_or_off, user_path(current_user), method: "put" %></button>
+        <div id = "filter-status" class="btn-group" role="group">
+          <%= render partial: '/users/filterstatus' %>
         </div>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default"><%= link_to "my filters", user_path(current_user) %></button>
+        <div id = "my-filter" class="btn-group" role="group">
+          <%= render partial: '/users/myfilter' %>
         </div>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></button>
@@ -25,14 +26,6 @@
       <%= link_to "Login", new_session_path  %>
       <%= link_to "Create Account", new_user_path %>
     <% end %>
-
-<div id= "flash-message-container">
-  <% flash.each do |name, msg| %>
-    <ul>
-      <li><%= content_tag :div, msg, class: name %></li>
-    <ul>
-  <% end %>
-</div>
 
 <%= yield %>
 
