@@ -14,7 +14,7 @@ describe MediaController do
     end
 
     it "renders the :index template" do
-      get :index, category_id: @category_new.id
+      xhr :get, :index, category_id: @category_new.id
       expect(response).to render_template :index
     end
 
