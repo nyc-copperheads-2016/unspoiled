@@ -43,6 +43,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def filtered_words
+    if current_user
+      filters = Word.joins(:preference).where('preferences.user_id = ?', current_user.id).pluck(:word)
+    else
+      filters = []
+    end
+    render :json => filters
+  end
+
+
+
   private
   def user_params
     params.require(:user).permit(:username,:password,:email)

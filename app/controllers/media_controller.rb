@@ -9,11 +9,6 @@ class MediaController < ApplicationController
     end
   end
 
-  def filtered_words
-    filters = Word.where(user: current_user)
-    render :json => filters
-  end
-
   def add_filter_words
     arr = Word.new(user: current_user, words: params[:cast])
     if arr.save
