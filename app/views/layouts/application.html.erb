@@ -27,14 +27,6 @@
       <%= link_to "Create Account", new_user_path %>
     <% end %>
 
-<div id= "flash-message-container">
-  <% flash.each do |name, msg| %>
-    <ul>
-      <li><%= content_tag :div, msg, class: name %></li>
-    <ul>
-  <% end %>
-</div>
-
 <%= yield %>
 
 <div id = "footer" class = "col-centered">Unspoiled is a DBC project by <a href="https://github.com/elizaway" target="_blank">Eliza Dunaway</a>, <a href="https://github.com/jhack32" target="_blank">Jack Huang</a>, <a href="https://github.com/bigless27" target="_blank">Ryan Lesson</a>, <a href="https://github.com/arcpetretta" target="_blank">Arcangelo Petretta</a></div>
