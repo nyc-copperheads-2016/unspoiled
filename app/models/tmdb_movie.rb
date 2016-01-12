@@ -7,10 +7,10 @@ class TmdbMovie
     response.parsed_response["results"][0]["id"]
   end
 
-  def self.find_characters movie_id
+  def self.find_characters movie_id, title
     url = API_ROOT + "movie/#{movie_id}/credits?api_key=e0c6c7bded5055b146501304684b8f94"
     response = HTTParty.get(url)
-    arr = []
+    arr = [title]
     response.parsed_response["cast"].each do |entry|
       arr << entry["character"]
     end
