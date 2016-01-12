@@ -35,7 +35,7 @@ class PreferencesController < ApplicationController
   def destroy
     preference = Preference.find_by(id: params[:id])
     preference.destroy
-    redirect_to user_path(current_user.id)
+    render json: {id: params[:id]}
   end
 
 end
