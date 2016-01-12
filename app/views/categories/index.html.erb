@@ -1,33 +1,27 @@
 <div id = "category">
-  <% @categories.each do |category| %>
-    <div class="panel-group">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <a class="panel-title" data-toggle="collapse" href="#collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>"><%= category.category_type %></a>
-        </div>
-        <div id="collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>" class="panel-collapse collapse">
-          <% category.medias.each do |media| %>
-            <div class="panel-body"><%= media.title %> <span id="user-feedback-<%= media.id %>"></span> </div>
-            <div class="inline">
-              <% if logged_in? %>
-                <%= form_for [current_user, @preference], :html => {:class => "new_preference"} do |t| %>
-                  <%= t.hidden_field :media_id, value: media.id %>
-                 <%= t.hidden_field :name, value: media.title %>
-                 <%= t.submit 'Add to filter', class: "submit-btn"  %>
-                 <% if @preference.errors.any? %>
-                   <div class = "error-messages">
-                     <p>Username has already been taken<p>
-                   </div>
-                 <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+<% @categories.each do |category| %>
+
+    <div class="panel-heading">
+        <a class="panel-title" data-toggle="collapse" href="#collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>"><%= category.category_type %></a>
     </div>
-  <% end %>
-</div>
+
+      <div id="collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>" class="panel-collapse collapse">
+      <% category.medias.each do |media| %>
+      <div class="panel-body noborder">
+          <ul class="no-list-style">
+            <%= form_for :preference, :html => {:class => "new_preference filter form-inline"}, url: user_preferences_path(current_user.id) do |t| %>
+              <li class="inline"><%= t.hidden_field :media_id, value: media.id %></li>
+              <li class="inline"><%= t.hidden_field :name, value: media.title %></li>
+              <li class="inline title"><%= media.title %></li>
+              <li class="inline submit"><%= t.submit 'Add to filter', :html => { :style => 'background-color:red;'}, class: "btn btn-default btn-xs submit-btn"  %></li>
+            <% end %>
+          </ul>
+        </div>
+
+      <% end %>
+      </div>
+<% end %>
+
 </div>
 
 

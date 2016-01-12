@@ -5,6 +5,89 @@
     text-align: center;
 }
 
+.panel-heading a:hover {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.panel-heading a:active {
+  color: white;
+  text-decoration: none;
+}
+.panel-heading a:focus {
+  color: white;
+  text-decoration: none;
+}
+
 .panel-heading {
-  background-color: #000066;
+  background-color: #331B9D;
+  color: white;
+  text-align: left;
+  text-shadow: .5px 2px #0F0051;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
+.panel-body.noborder {
+  border: 1px solid #dddddd;
+}
+
+.panel.noborder {
+    border: none;
+    box-shadow: none;
+}
+.panel.noborder > .panel-heading {
+    border: 1px solid #dddddd;
+    border-radius: 0;
+}
+
+.no-list-style {
+  list-style: none;
+}
+
+.inline {
+  display: inline;
+}
+
+.btn.btn-default.btn-xs.submit-btn {
+  background-color: #331B9D;
+  color: white;
+  float: right;
+}
+.btn.btn-default.btn-xs.submit-btn:hover {
+  background-color: #514800;
+}
+.btn.btn-default.btn-xs.submit-btn:active {
+  background-color: #514800;
+}
+
+.inline.title {
+  float: left;
+}
+
+.panel.panel-default.panel-group.no-border {
+    border: none;
+    box-shadow: none;
+}
+
+.footer {
+    padding-top: 60px;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  height: 155px; /* .push must be the same height as .footer */
 }
