@@ -1,9 +1,9 @@
 var loggedOn = false;
 function loggedIn() {
-  $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
-    // $.get("http://localhost:3000/user_logged_in", function(data) {
+  // $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
+    $.get("http://localhost:3000/user_logged_in", function(data) {
     if (data) {
-      debugger
+      // debugger
       sessionStorage.loggedIn = true
     }
     else {
@@ -20,8 +20,8 @@ function loggedIn() {
 
 function setFilter() {
 
-  $.get("https://serene-garden-3411.herokuapp.com/filtered_words", function(data) {
-  // $.get("http://localhost:3000/filtered_words", function(data) {
+  // $.get("https://serene-garden-3411.herokuapp.com/filtered_words", function(data) {
+  $.get("http://localhost:3000/filtered_words", function(data) {
 
     chrome.storage.local.set({filter: data});
     // console.log("Filter set", data);
@@ -29,8 +29,11 @@ function setFilter() {
       // console.log("callback: ", obj)
       if (sessionStorage.loggedIn === "true"){
         if (obj.unspoiledOn === true) {
-          if (obj.filter) {
+          if (obj.filter.length > 2) {
             hideWord(allTags)
+          }
+          else {
+            console.log("Unspoiled off")
           }
         }
       }
@@ -63,8 +66,8 @@ function hideWord(tags) {
   $.each(tags, function(key, element) {
     if (findMatch($(element).html())) {
       // console.log($(element)[0])
-      $(element).hide()
-      // $(element).css("background-color", "red")
+      // $(element).hide()
+      $(element).css("background-color", "red")
     }
   })
 }

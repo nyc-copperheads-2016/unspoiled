@@ -14,4 +14,20 @@ class Preference < ActiveRecord::Base
       "off"
     end
   end
+
+  def self.create_movie_words(preference, media_title)
+    tmdb_id = TmdbMovie.find_first_match_id("movie", media_title)
+      characters = TmdbMovie.find_characters("movie", tmdb_id, media_title)
+      characters.each do |character|
+        preference.words.create!(word: character)
+      end
+  end
+
+  def self.create_tv_words(preference, media_title)
+    tmdb_id = TmdbMovie.find_first_match_id("tv", media_title)
+      characters = TmdbMovie.find_characters("tv", tmdb_id, media_title)
+      characters.each do |character|
+        preference.words.create!(word: character)
+      end
+  end
 end

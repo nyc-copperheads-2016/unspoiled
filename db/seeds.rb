@@ -11,22 +11,31 @@ arc = User.create!(email:'arc@example.com', username:'arcangelo', password:'pass
 a = Category.create!(category_type: "Movies")
 b = Category.create!(category_type: "T.V. Shows")
 
-
-Media.create!(title: "South Park",category_id: b.id )
+#tv shows
+Media.create!(title: "Marvel's Daredevil",category_id: b.id )
 Media.create!(title: "Game of Thrones", category_id: b.id)
-Media.create!(title: "Walking Dead", category_id: b.id)
-Media.create!(title: "Starwars", category_id: a.id)
-Media.create!(title: "Top Gun", category_id: b.id)
-Media.create!(title: "John Tucker Must Die!", category_id: b.id)
+Media.create!(title: "The Walking Dead", category_id: b.id)
+Media.create!(title: "Humans", category_id: b.id)
+Media.create!(title: "Narcos", category_id: b.id)
+Media.create!(title: "Marco Polo", category_id: b.id)
+
+#movies
+Media.create!(title: "Star Wars: The Force Awakens", category_id: a.id)
+Media.create!(title: "The Revenant", category_id: a.id)
+Media.create!(title: "The Martian", category_id: a.id)
+Media.create!(title: "The Hateful Eight", category_id: a.id)
+Media.create!(title: "Interstellar", category_id: a.id)
+Media.create!(title: "Terminator Genisys", category_id: a.id)
 
 
-Media.all.each do |media|
-  pref = Preference.create!(media: media, user:arc, active:true)
-  tmdb_id = TmdbMovie.find_first_match_id(media.title)
-  characters = TmdbMovie.find_characters(tmdb_id)
-  characters.each do |character|
-    pref.words.create!(word: character)
-  end
-end
+# Media.all.each do |media|
+#   pref = Preference.create!(media: media, user:arc, active:true)
+#   tmdb_id = TmdbMovie.find_first_match_id(media.title)
+#   characters = TmdbMovie.find_characters(tmdb_id)
+#   characters.each do |character|
+#     pref.words.create!(word: character)
+#   end
+# end
+
 
 
