@@ -57,14 +57,12 @@ function findMatch(text) {
   return match
 }
 
-var prevHTML = []
 function hideWord(tags) {
   $.each(tags, function(key, element) {
     if (findMatch($(element).html())) {
       // console.log($(element)[0])
       // $(element).hide()
       // var replaceImg = '<img src="http://localhost:3000/assets/icon-945908b8301759cca3dc7d98c417383df6e8697fc6362343b526a240b599fc94.png" alt="Unspoiled!" />'
-      prevHTML.push($(element))
       $(element).hide()
       $(element).parent().append('<a class= "meep" href="#">Unspoiled (click to show spoiler)</a>')
       // $(element).css("background-color", "red")
@@ -77,7 +75,6 @@ $(document).ready(function() {
   setFilter()
   $('body').on('click','.meep' ,function(event){
     event.preventDefault();
-
     $(event.target).siblings().show()
     $(event.target).hide()
   })
