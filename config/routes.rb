@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
   get '/user_logged_in', to: 'sessions#user_logged_in'
   get '/filtered_words', to: 'users#filtered_words'
-  post '/filter_words', to: 'media#add_filter_words'
+  # post '/filter_words', to: 'preferences#add_filter_words'
 end
