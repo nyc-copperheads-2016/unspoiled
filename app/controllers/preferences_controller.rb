@@ -23,17 +23,19 @@ class PreferencesController < ApplicationController
     preference = Preference.find(params[:id])
     if preference.active == true
       preference.update_attribute(:active, !true)
-      redirect_to user_path(current_user.id)
+
+      render json: {userId: preference.user_id, preferenceId: preference.id, active: false}
+      # redirect_to user_path(current_user.id)
     else
       preference.update_attribute(:active, true)
-      redirect_to user_path(current_user.id)
+      render json: {userId: preference.user_id, preferenceId: preference.id, active: true}
     end
   end
 
   def destroy
     preference = Preference.find_by(id: params[:id])
     preference.destroy
-    redirect_to user_path(current_user.id)
+    render json: {id: params[:id]}
   end
 
 end

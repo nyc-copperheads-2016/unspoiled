@@ -1,18 +1,14 @@
+
 $(document).ready(function(){
 
-  // $('#category').on('submit', '.filter',function(event){
-  //   event.preventDefault();
-  //   $.ajax({
-  //     url: event.target.action,
-  //     method: event.target.method,
-  //     data: $(this).serialize()
-  //   }).done(function(response){
-  //     $('#category').html(response)
-  //   }).fail(function(error){
-  //   debugger
-  //     console.log("fail :(", error)
-  //   })
-  // });
+  String.prototype.supplant = function (o) {
+      return this.replace(/{([^{}]*)}/g,
+          function (a, b) {
+              var r = o[b];
+              return typeof r === 'string' || typeof r === 'number' ? r : a;
+         }
+     );
+  };
 
   $('.new_preference').on('submit', function(event) {
     console.log("new_preference", event)
@@ -67,4 +63,54 @@ $(document).ready(function(){
       console.log("fail :(", error)
     })
   })
+
+  $('#category').on('click', "#on-off a", function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.href,
+      method: 'PUT',
+      type: 'json'
+      }).done(function(response){
+        var onOff = response.active ? "on" : "off";
+        var link = '<a href="/users/' + response.userId +
+          '/preferences/' + response.preferenceId + '">' + onOff + "</a>";
+     $("#filter-on-off-{id}".supplant({id:response.preferenceId})).html(link);
+    }).fail(function(error){
+      console.log("fail :(", error)
+      })
+    });
+
+    $('#category').on('click', "#delete-filter a", function(event){
+    event.preventDefault();
+    swal({   title: "Are you sure?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: false,
+        cancelButtonText: "Cancel",
+        closeOnConfirm: false,
+        closeOnCancel: false
+         },
+    function(confirm){
+          if (confirm){
+            $.ajax({
+              url:event.target.href,
+              method: 'DELETE',
+              type: 'json'
+            }).done(function(response){
+              swal("Deleted!", "Filter was deleted", "success");
+              $("#filter-delete-{id}".supplant({id:response.id})).parent().parent().hide();
+            }).fail(function(error){
+              console.log("fail :(", error);
+            });
+          }
+          else{
+            swal('Cancelled', 'Filter not deleted', 'error');
+            return;
+          }
+      });
+  });
+
 });
+
+
