@@ -6,11 +6,20 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @categories = Category.all
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      if request.xhr?
+        render '/categories/index'
+      else
+        redirect_to root_path
+      end
     else
-      render :new
+      if request.xhr?
+        render :json => {message: @user.errors.full_messages}, status: 422
+      else
+        render :new
+      end
     end
   end
 
@@ -24,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    #binding.pry
     @user = User.find(params[:id])
     if @user.active == true
       @user.update_attribute(:active, false)
