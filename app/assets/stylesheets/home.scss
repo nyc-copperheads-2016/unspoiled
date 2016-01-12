@@ -93,3 +93,8 @@ html, body {
 .footer, .push {
   height: 155px; /* .push must be the same height as .footer */
 }
+
+#unspoiled-logo:hover img{
+  -webkit-filter: hue-rotate(20deg)
+
+}
