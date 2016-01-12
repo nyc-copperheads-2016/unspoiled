@@ -8,12 +8,17 @@
       <div id="collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>" class="panel-collapse collapse">
       <% category.medias.each do |media| %>
       <div class="panel-body noborder">
+          <% if logged_in? %>
           <ul class="no-list-style">
             <%= form_for :preference, :html => {:class => "new_preference filter form-inline"}, url: user_preferences_path(current_user.id) do |t| %>
               <li class="inline"><%= t.hidden_field :media_id, value: media.id %></li>
               <li class="inline"><%= t.hidden_field :name, value: media.title %></li>
               <li class="inline title"><%= media.title %></li>
               <li class="inline submit"><%= t.submit 'Add to filter', :html => { :style => 'background-color:red;'}, class: "btn btn-default btn-xs submit-btn"  %></li>
+            <% end %>
+            <% else %>
+            <li class="inline title"><%= media.title %></li>
+            <li class="inline submit btn btn-default btn-xs submit-btn"><a href="/sessions/new">Log in to add filter</a></li>
             <% end %>
           </ul>
         </div>

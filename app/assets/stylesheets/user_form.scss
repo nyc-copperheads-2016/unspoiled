@@ -5,3 +5,13 @@
 .inline {
   display: inline;
 }
+
+.form {
+  background-color: #331B9D;
+  color: white;
+  text-align: left;
+  text-shadow: .5px 2px #0F0051;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}

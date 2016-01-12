@@ -8,10 +8,10 @@
 </head>
 <body>
   <div class="wrapper">
+    <div class="col-centered"><%= image_tag("2dyVZtK.png") %></div>
     <div class="col-centered"><h3><%= link_to "Unspoiled", root_path %></h3></div>
-    <div class="col-centered"><%= image_tag("icon.png") do %></div>
-    <% if current_user %>
-    <div class="col-centered"
+          <div class="col-centered">
+    <% if logged_in? %>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div id = "filter-status" class="btn-group" role="group">
           <%= render partial: '/users/filterstatus' %>
@@ -23,19 +23,20 @@
           <button type="button" class="btn btn-default"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></button>
         </div>
       </div>
-    </div>
     <% else %>
       <%= link_to "Login", new_session_path  %>
       <%= link_to "Create Account", new_user_path %>
     <% end %>
-    <% end %>
+
 
 <%= yield %>
  <div class="push"></div>
 </div>
+</div>
 <div class="footer">
 
   <div class="col-centered">Unspoiled is a DBC project by <a href="https://github.com/elizaway" target="_blank">Eliza Dunaway</a>, <a href="https://github.com/jhack32" target="_blank">Jack Huang</a>, <a href="https://github.com/bigless27" target="_blank">Ryan Lesson</a>, <a href="https://github.com/arcpetretta" target="_blank">Arcangelo Petretta</a></div>
+
 </div>
 </body>
 </html>
