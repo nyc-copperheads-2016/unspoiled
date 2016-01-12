@@ -42,7 +42,7 @@ function setFilter() {
 }
 
 // var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
-var allTags = $("*").not("html").not("head").not("body").not("div")
+var allTags = $("*").not("html").not("head").not("body").not("div").not("script").not('meta').
 
 // var array_of_words = ["netflix", "streaming", "jon snow"]
 var array_of_words = []
@@ -52,10 +52,11 @@ chrome.storage.local.get("filter", function(obj) {
   }
 })
 
-function findMatch(string) {
+function findMatch(text) {
   var match = false
   $.each(array_of_words, function(index, element) {
-    if (string.toLowerCase().search(array_of_words[index].toLowerCase()) != -1) {
+    // debugger
+    if (text.toLowerCase().search(array_of_words[index].toLowerCase()) != -1) {
       match = true
     }
   })
@@ -64,6 +65,7 @@ function findMatch(string) {
 
 function hideWord(tags) {
   $.each(tags, function(key, element) {
+    // debugger
     if (findMatch($(element).html())) {
       // console.log($(element)[0])
       // $(element).hide()

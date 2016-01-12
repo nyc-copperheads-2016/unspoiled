@@ -8,24 +8,24 @@
 
 
 arc = User.create!(email:'arc@example.com', username:'arcangelo', password:'password', active:true)
-a = Category.create!(category_type: "Movies")
-b = Category.create!(category_type: "T.V. Shows")
+movies = Category.create!(category_type: "Movies")
+tv = Category.create!(category_type: "T.V. Shows")
 
 #tv shows
-Media.create!(title: "Marvel's Daredevil",category_id: b.id )
-Media.create!(title: "Game of Thrones", category_id: b.id)
-Media.create!(title: "The Walking Dead", category_id: b.id)
-Media.create!(title: "Humans", category_id: b.id)
-Media.create!(title: "Narcos", category_id: b.id)
-Media.create!(title: "Marco Polo", category_id: b.id)
+Media.create!(title: "Marvel's Daredevil",category_id: tv.id )
+Media.create!(title: "Game of Thrones", category_id: tv.id)
+Media.create!(title: "The Walking Dead", category_id: tv.id)
+Media.create!(title: "Humans", category_id: tv.id)
+Media.create!(title: "Narcos", category_id: tv.id)
+Media.create!(title: "Marco Polo", category_id: tv.id)
 
 #movies
 Media.create!(title: "Star Wars: The Force Awakens", category_id: a.id)
-Media.create!(title: "The Revenant", category_id: a.id)
-Media.create!(title: "The Martian", category_id: a.id)
-Media.create!(title: "The Hateful Eight", category_id: a.id)
-Media.create!(title: "Interstellar", category_id: a.id)
-Media.create!(title: "Terminator Genisys", category_id: a.id)
+Media.create!(title: "The Revenant", category_id: movies.id)
+Media.create!(title: "The Martian", category_id: movies.id)
+Media.create!(title: "The Hateful Eight", category_id: movies.id)
+Media.create!(title: "Interstellar", category_id: movies.id)
+Media.create!(title: "Terminator Genisys", category_id: movies.id)
 
 
 # Media.all.each do |media|
