@@ -19,7 +19,9 @@ class Preference < ActiveRecord::Base
     tmdb_id = TmdbMovie.find_first_match_id("movie", media_title)
       characters = TmdbMovie.find_characters("movie", tmdb_id, media_title)
       characters.each do |character|
-        preference.words.create!(word: character)
+        if character != ""
+          preference.words.create!(word: character)
+        end
       end
   end
 
