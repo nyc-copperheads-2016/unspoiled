@@ -20,7 +20,7 @@ class Preference < ActiveRecord::Base
       characters = TmdbMovie.find_characters("movie", tmdb_id, media_title)
       characters.each do |character|
         if character != ""
-          preference.words.create!(word: character)
+          preference.words.create!(word: character.downcase)
         end
       end
   end
@@ -29,7 +29,7 @@ class Preference < ActiveRecord::Base
     tmdb_id = TmdbMovie.find_first_match_id("tv", media_title)
       characters = TmdbMovie.find_characters("tv", tmdb_id, media_title)
       characters.each do |character|
-        preference.words.create!(word: character)
+        preference.words.create!(word: character.downcase)
       end
   end
 end
