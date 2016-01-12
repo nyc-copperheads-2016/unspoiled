@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def user_logged_in
-    render :json => current_user
+    preferences = Preference.find_by(user: current_user)
+    render :json => current_user.as_json(:include => [:preferences])
   end
 end
