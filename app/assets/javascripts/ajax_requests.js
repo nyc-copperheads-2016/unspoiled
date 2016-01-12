@@ -80,26 +80,37 @@ $(document).ready(function(){
       })
     });
 
-  $('#category').on('click', "#delete-filter a", function(event){
+    $('#category').on('click', "#delete-filter a", function(event){
     event.preventDefault();
-    // swal({   title: "Are you sure?",
-    //     type: "warning",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#DD6B55",
-    //     confirmButtonText: "Yes, delete it!",
-    //     cancelButtonText: "Cancel",
-    //     closeOnConfirm: false ,
-    //      });
-    $.ajax({
-      url:event.target.href,
-      method: 'DELETE',
-      type: 'json'
-    }).done(function(response){
-      $("#filter-delete-{id}".supplant({id:response.id})).parent().parent().hide()
-    }).fail(function(error){
-      console.log("fail :(", error)
-    })
+    swal({   title: "Are you sure?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: false,
+        cancelButtonText: "Cancel",
+        closeOnConfirm: false,
+        closeOnCancel: false
+         },
+    function(confirm){
+          if (confirm){
+            $.ajax({
+              url:event.target.href,
+              method: 'DELETE',
+              type: 'json'
+            }).done(function(response){
+              swal("Deleted!", "Filter was deleted", "success");
+              $("#filter-delete-{id}".supplant({id:response.id})).parent().parent().hide();
+            }).fail(function(error){
+              console.log("fail :(", error);
+            });
+          }
+          else{
+            swal('Cancelled', 'Filter not deleted', 'error');
+            return;
+          }
+      });
   });
+
 });
 
 
