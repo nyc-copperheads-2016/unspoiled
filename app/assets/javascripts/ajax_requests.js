@@ -67,4 +67,27 @@ $(document).ready(function(){
       console.log("fail :(", error)
     })
   })
+
+
+  $('#user-preferences').on('click', "#filter-on-off", function(event){
+    event.preventDefault();
+    //debugger
+    $.ajax({
+      url: event.target.href,
+      method: 'PUT',
+      type: 'json'
+
+      }).done(function(response){
+        var onOff = response.active ? "on" : "off";
+        var link = '<a href="/users/' + response.userId +
+          '/preferences/' + response.preferenceId + '">' + onOff + "</a>";
+     $('#filter-on-off').html(link);
+    }).fail(function(error){
+      console.log("fail :(", error)
+      })
+    });
+
+
 });
+
+

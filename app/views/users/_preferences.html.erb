@@ -4,10 +4,11 @@
    <p>
      <span>
       <strong><%= preference.media.title %></strong>
-      status: <%= link_to preference.on_or_off, user_preference_path(current_user, preference.id), method: "put" %> <%= link_to 'delete', user_preference_path(current_user, preference.id), method: "delete" %></span>
+      status: <span id = "filter-on-off"><%= link_to preference.on_or_off, user_preference_path(current_user, preference.id) %></span>
+        <span id = "delete-filter"> <%= link_to 'delete', user_preference_path(current_user, preference.id), method: "delete" %></span>
+    </span>
    </p>
   <% end %>
-
-
-
 </div>
+
+
