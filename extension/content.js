@@ -42,7 +42,7 @@ function setFilter() {
 }
 
 // var allTags = document.querySelectorAll('a, p, span, h1, h2, h3, h4, h5, h6, caption')
-var allTags = $("*").not("html").not("head").not("body").not("div").not("script").not('meta').
+var allTags = $("*").not("html").not("head").not("body").not("div").not("script").not('meta').not('li')
 
 // var array_of_words = ["netflix", "streaming", "jon snow"]
 var array_of_words = []
@@ -55,7 +55,6 @@ chrome.storage.local.get("filter", function(obj) {
 function findMatch(text) {
   var match = false
   $.each(array_of_words, function(index, element) {
-    // debugger
     if (text.toLowerCase().search(array_of_words[index].toLowerCase()) != -1) {
       match = true
     }
@@ -65,17 +64,17 @@ function findMatch(text) {
 
 function hideWord(tags) {
   $.each(tags, function(key, element) {
-    // debugger
     if (findMatch($(element).html())) {
       // console.log($(element)[0])
       // $(element).hide()
-      $(element).css("background-color", "red")
+      var replaceImg = '<img src="http://localhost:3000/assets/icon-945908b8301759cca3dc7d98c417383df6e8697fc6362343b526a240b599fc94.png" alt="Unspoiled!" />'
+      $(element).html(replaceImg)
+      // $(element).css("background-color", "red")
     }
   })
 }
 
 $(document).ready(function() {
-  // chrome.storage.local.clear()
   loggedIn()
   setFilter()
 })
