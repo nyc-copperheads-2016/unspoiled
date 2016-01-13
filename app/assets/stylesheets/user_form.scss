@@ -2,9 +2,19 @@ li {
   list-style: none;
 }
 
+.create-user {
+  color: #337AB7;
+}
+
+.user-submit{
+  color: black;
+}
+
+
 .inline {
   display: inline;
 }
+
 
 
 .new_user {
@@ -14,7 +24,6 @@ li {
 #user-create-form {
   background-color: #331B9D;
   border-radius: 4px;
-  color: white;
   padding-top: 10px;
   padding-bottom: 10px;
   text-shadow: .5px 2px #0F0051;
