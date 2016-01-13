@@ -18,7 +18,6 @@ function loggedIn() {
 }
 
 function setFilter() {
-
   // $.get("https://thawing-badlands-1060.herokuapp.com/filtered_words", function(data) {
   $.get("http://localhost:3000/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
@@ -39,8 +38,6 @@ function setFilter() {
   })
 }
 
-// var allTags = $("*").not("html").not("head, script, title, link").not('meta').not('title').not("body, div")
-// var allTags = $('body').find('*').children().children().children().not('section')
 var allTags = $('body').find('*').not('script')
 var array_of_words = []
 chrome.storage.local.get("filter", function(obj) {
@@ -69,20 +66,20 @@ chrome.storage.local.get("filter", function(obj) {
 //     // match = true
 //     }
 //   return false
-}
+// }
 
 
 var textNodes = $("*").contents().filter(function(){ return this.nodeType == 3; });
 function hideWord(tags) {
   textNodes.each(function(index, node) {
-   array_of_words.forEach(function(word){
+    array_of_words.forEach(function(word){
       if (node.wholeText.toLowerCase().match(word) != null) {
-        console.log("word", word, node.parentNode)
-         $(node.parentNode).hide()
-         $(node.parentNode).parent().append('<a class= "meep" href="#" style="color: white; background-color: purple; border: 3px solid lightblue; width: 200px;">Unspoiled (click to show spoiler)</a>')
+        // console.log("word", word, node.parentNode)
+        $(node.parentNode).hide()
+        $(node.parentNode).parent().append('<a class= "meep" href="#" style="color: white; background-color: purple; border: 3px solid lightblue; width: 200px;">Unspoiled (click to show spoiler)</a>')
       }
-   })
-});
+    })
+  });
 }
 //   $.each(tags, function(key, element) {
 //     console.log(element)
