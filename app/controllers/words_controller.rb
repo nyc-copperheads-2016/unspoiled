@@ -3,11 +3,11 @@ class WordsController < ApplicationController
   end
 
   def create
-    new_word = params[:word][:word].gsub(',','').split(' ')
+    new_word_array = params[:word][:word].split(',')
     media = Media.find_by(id: params[:media_id])
     new_preference = media.preferences.create!(user: current_user)
-    new_word.each do |word|
-      Word.create!(word: word.downcase, preference: new_preference)
+    new_word_array.each do |word|
+      Word.create!(word: word.downcase.strip, preference: new_preference)
     end
     redirect_to user_path(current_user.id)
   end
