@@ -26,7 +26,7 @@ function setFilter() {
       // console.log("callback: ", obj)
       if (sessionStorage.loggedIn === "true"){
         if (obj.unspoiledOn === true) {
-          if (obj.filter.length > 2) {
+          if (obj.filter.length > 1) {
             hideWord(allTags)
           }
           else {
