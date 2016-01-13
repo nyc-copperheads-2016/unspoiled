@@ -6,30 +6,11 @@ class Preference < ActiveRecord::Base
   validates :user, :media, :active, presence: true
   validates :media_id, :uniqueness => {:scope => :user}
 
-
-  def on_or_off
-    if active == true
-      "on"
-    else
-      "off"
-    end
+  def self.create_media_words(preference, media)
+    media_type = media.category_type
+    tmdb_id = TmdbMovie.find_first_match_id(media_type, media_title)
+    characters = TmdbMovie.find_characters(media_type, tmdb_id, media_title)
+    characters.each { |word| preference.words.create!(word:word) }
   end
 
-  def self.create_movie_words(preference, media_title)
-    tmdb_id = TmdbMovie.find_first_match_id("movie", media_title)
-      characters = TmdbMovie.find_characters("movie", tmdb_id, media_title)
-      characters.each do |character|
-        if character != ""
-          preference.words.create!(word: character.downcase)
-        end
-      end
-  end
-
-  def self.create_tv_words(preference, media_title)
-    tmdb_id = TmdbMovie.find_first_match_id("tv", media_title)
-      characters = TmdbMovie.find_characters("tv", tmdb_id, media_title)
-      characters.each do |character|
-        preference.words.create!(word: character.downcase)
-      end
-  end
 end

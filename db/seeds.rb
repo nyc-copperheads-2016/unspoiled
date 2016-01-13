@@ -20,7 +20,7 @@ Media.create!(title: "Narcos", category_id: tv.id)
 Media.create!(title: "Marco Polo", category_id: tv.id)
 
 #movies
-Media.create!(title: "Star Wars: The Force Awakens", category_id: a.id)
+Media.create!(title: "Star Wars: The Force Awakens", category: movies)
 Media.create!(title: "The Revenant", category_id: movies.id)
 Media.create!(title: "The Martian", category_id: movies.id)
 Media.create!(title: "The Hateful Eight", category_id: movies.id)

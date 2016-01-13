@@ -32,6 +32,7 @@ $(document).ready(function(){
         });
 
     }).fail(function(error){
+      console.log(arguments);
       swal({
           title: "Error!",
           text: "You already added this filter",

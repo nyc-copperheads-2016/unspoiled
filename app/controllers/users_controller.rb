@@ -25,29 +25,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    if request.xhr?
-      render '/users/show', layout: false
-    else
-      render '/users/show'
-    end
+    render '/users/show', layout: !request.xhr?
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.active == true
-      @user.update_attribute(:active, false)
-      if request.xhr?
-        render partial: '/users/filterstatus', layout: false
-      else
-       redirect_to root_path
-      end
+    @user.update_attribute(:active, !@user.active)
+    if request.xhr?
+      render partial: '/users/filterstatus', layout: false
     else
-      @user.update_attribute(:active, true)
-      if request.xhr?
-        render partial: '/users/filterstatus', layout: false
-      else
-        redirect_to root_path
-      end
+     redirect_to root_path
     end
   end
 
@@ -62,9 +49,9 @@ class UsersController < ApplicationController
     render :json => filters
   end
 
-  def active_words(array)
+  def active_words(preferences)
     list_of_words = []
-    array.each do |preference|
+    preferences.each do |preference|
       preference.words.each do |word|
         list_of_words << word.word
       end
