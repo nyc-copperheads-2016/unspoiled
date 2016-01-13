@@ -136,6 +136,10 @@ $(document).ready(function(){
       console.log("fail")
     })
   });
+
+  $("#TheCheckBox").on('click',function(event){
+    debugger
+  })
 });
 
 
