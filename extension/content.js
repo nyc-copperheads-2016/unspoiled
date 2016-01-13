@@ -105,7 +105,6 @@ function hideWord(tags) {
 //     }
 //   })
 
-
 $(document).ready(function() {
   loggedIn()
   setFilter()
