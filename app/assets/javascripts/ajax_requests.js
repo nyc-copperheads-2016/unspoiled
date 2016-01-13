@@ -43,18 +43,6 @@ $(document).ready(function(){
     });
   });
 
-  $('#filter-status').on('click', 'a', function(event){
-    event.preventDefault();
-    $.ajax({
-      url: event.target.href,
-      method: 'PUT'
-    }).done(function(response){
-      $('#filter-status').html(response);
-    }).fail(function(error){
-      console.log("fail :(", error)
-    })
-  });
-
   $('#my-filter').on('click', 'a', function(event){
     event.preventDefault();
     $.ajax({
@@ -137,9 +125,20 @@ $(document).ready(function(){
     })
   });
 
-  $("#TheCheckBox").on('click',function(event){
-    debugger
+  $("#TheCheckBox").on("switchChange.bootstrapSwitch",function(event){
+     event.preventDefault();
+
+    $.ajax({
+      url: "http://localhost:3000/users/3",
+      method: 'put'
+    }).done(function(response){
+      console.log(response.message)
+    }).fail(function(error){
+      console.log(response.message)
+      console.log("fail :(", error)
+    })
   })
 });
+
 
 

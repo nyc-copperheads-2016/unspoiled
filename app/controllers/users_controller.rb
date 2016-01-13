@@ -37,14 +37,16 @@ class UsersController < ApplicationController
     if @user.active == true
       @user.update_attribute(:active, false)
       if request.xhr?
-        render partial: '/users/filterstatus', layout: false
+        render :json => {message: @user.active}
+        # render partial: '/users/filterstatus', layout: false
       else
        redirect_to root_path
       end
     else
       @user.update_attribute(:active, true)
       if request.xhr?
-        render partial: '/users/filterstatus', layout: false
+        render :json => {message: @user.active}
+        # render partial: '/users/filterstatus', layout: false
       else
         redirect_to root_path
       end
