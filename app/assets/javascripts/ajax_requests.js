@@ -127,7 +127,7 @@ $(document).ready(function(){
     }).fail(function(response){
       var errors = response.responseJSON.message
       swal({
-        title: errors[errors.length -1],
+        title: errors[0],
         type: 'warning',
         showCancelButton: false,
         confirmButtonColor:"#0F0051" ,
