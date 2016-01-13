@@ -1,33 +1,40 @@
 <div id="user-create-form">
-  <%= form_for @user do |t| %>
+  <ul>
+  <%= form_for @user, role: "form" do |t| %>
   <% if @user.errors.any? %>
    <div id="error_explanation">
      <h2>
        <%= pluralize(@user.errors.count, "error") %> prohibited
        this article from being saved:
      </h2>
-     <ul>
+     <ul class="errors">
        <% @user.errors.full_messages.each do |msg| %>
          <li><%= msg %></li>
        <% end %>
      </ul>
    </div>
    <% end %>
-   <span>
-    <li class="no-list-style"><%= t.label :username %>
-    <%= t.text_field :username %></li>
+  <div class="form-group">
+    <li><%= t.label :username %></li>
+    <li><%= t.text_field :username %></li>
+  </div>
 
-    <li class="no-list-style"><%= t.label :password %>
-    <%= t.password_field :password %></li>
+  <div class="form-group">
+    <li><%= t.label :password %></li>
+    <li><%= t.password_field :password %></li>
+  </div>
 
-    <li class="no-list-style"><%= t.label :password_confirmation %>
-    <%= t.password_field :password_confirmation %></li>
+  <div class="form-group">
+    <li><%= t.label :password_confirmation %></li>
+    <li><%= t.password_field :password_confirmation %></li>
+  </div>
 
-    <li class="no-list-style"><%= t.label :email %>
-    <%= t.text_field :email %></li>
+  <div class="form-group">
+    <li><%= t.label :email %></li>
+    <li><%= t.text_field :email %></li>
+  </div>
 
-    <li class="no-list-style"><%= t.submit "create account" %></li>
-   </span>
+    <li><%= t.submit "create account" %></li>
 
   <% end %>
 </div>

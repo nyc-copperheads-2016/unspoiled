@@ -92,6 +92,67 @@ html, body {
 
 .footer, .push {
   height: 155px; /* .push must be the same height as .footer */
+  color: #514800;
+}
+
+.footer a{
+  color: #9D8B00;
+}
+
+.tagline a {
+  color: #9D8B00;
+  text-shadow: .5px .5px #0F0051;
+}
+
+.tagline a:hover {
+  color: #514800;
+  text-decoration: none;
+  font-weight: bold;
+}
+.tagline a:active {
+  color: #514800;
+  text-decoration: none;
+}
+.tagline a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-group .btn-primary {
+  background-color: #9D8B00;
+  border: .5px solid #514800;
+  text-shadow: .5px 2px #0F0051;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+.btn-group .btn-primary:hover {
+  background-color: #514800;
+  border: .5px solid #514800
+}
+
+.btn-primary a:hover {
+  background-color: #514800;
+  border: .5px solid #514800;
+  font-weight: bold;
+}
+.btn-primary a {
+  border: .5px solid #514800;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .tagline a {
+    font-size: 0.60em;
+  }
+
+  .tagline a:hover {
+    font-size: 0.60em;
+  }
+
+  .tagline a:active {
+    font-size: 0.60em;
+  }
 }
 
 #unspoiled-logo:hover img{
