@@ -32,6 +32,7 @@ $(document).ready(function(){
         });
 
     }).fail(function(error){
+      console.log(arguments);
       swal({
           title: "Error!",
           text: "You already added this filter",
@@ -122,7 +123,7 @@ $(document).ready(function(){
     }).done(function(response){
       swal({title: 'Welcome',
             text: "Keep the stories you love unspoiled",
-            imageUrl: '/assets/icon.png'});
+            imageUrl: '/assets/new_logo.png'});
       $('.wrapper').html(response)
     }).fail(function(response){
       var errors = response.responseJSON.message
