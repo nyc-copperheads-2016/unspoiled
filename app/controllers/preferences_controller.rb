@@ -10,8 +10,6 @@ class PreferencesController < ApplicationController
     if @preference.save
       if @mediaobj.category.category_type == "Movies"
         Preference.create_movie_words(@preference, @mediaobj.title)
-      elsif @mediaobj.category_category_type == "People"
-        Word.split_word(@mediaobj.title)
       else
         Preference.create_tv_words(@preference, @mediaobj.title)
       end
