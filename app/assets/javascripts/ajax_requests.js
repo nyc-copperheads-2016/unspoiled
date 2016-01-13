@@ -137,8 +137,9 @@ $(document).ready(function(){
     })
   });
 
-  $("#TheCheckBox").on('click',function(event){
+  $("#TheCheckBox").on("switchChange.bootstrapSwitch",function(event){
      event.preventDefault();
+
     $.ajax({
       url: "http://localhost:3000/users/3",
       method: 'put'
@@ -150,5 +151,6 @@ $(document).ready(function(){
     })
   })
 });
+
 
 
