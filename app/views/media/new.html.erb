@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <%= form_for Media.new, url: category_media_index_path(params[:category_id]) do |t| %>
+    <li class="inline title">Enter the name of the filter:</li>
+    <li class="inline text"><%= t.text_field :title %></li>
+    <li class="inline submit"><%= t.submit 'Add to filter', :html => { :style => 'background-color:red;'}, class: "btn btn-default btn-xs submit-btn"  %></li>
+  <% end %>
+<% end %>

@@ -11,10 +11,17 @@ class MediaController < ApplicationController
     end
   end
 
-  # def add_filter_words
-  #   arr = Word.new(user: current_user, words: params[:cast])
-  #   if arr.save
-  #     redirect_to filtered_words_path
-  #   end
-  # end
+  def new
+    Media.new
+  end
+
+  def create
+    new_media = Media.new(title: params[:media][:title], category: Category.find_by(category_type: 'Custom Filter'))
+    if new_media.save
+      redirect_to "/media/#{new_media.id}/words"
+    else
+      redirect_to custom_filter_path
+    end
+  end
+
 end
