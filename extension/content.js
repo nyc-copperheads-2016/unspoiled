@@ -64,8 +64,7 @@ function hideWord(tags) {
       // $(element).hide()
       // var replaceImg = '<img src="http://localhost:3000/assets/icon-945908b8301759cca3dc7d98c417383df6e8697fc6362343b526a240b599fc94.png" alt="Unspoiled!" />'
       $(element).hide()
-      $(element).parent().append('<a class= "meep" href="#">Unspoiled (click to show spoiler)</a>')
-      // $(element).css("background-color", "red")
+      $(element).parent().append('<a class= "meep" href="#" style="border: 3px solid red; width: 200px;">Unspoiled (click to show spoiler)</a>')
     }
   })
 }
