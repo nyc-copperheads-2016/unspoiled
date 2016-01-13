@@ -1,2 +1,9 @@
-<button type="button" class="btn btn-default">filter status: <%= link_to current_user.on_or_off, user_path(current_user) %></button>
+ <button type="button" class="btn btn-default">filter status: <%= link_to current_user.on_or_off, user_path(current_user) %></button>
 
+
+<form>
+  <input id="TheCheckBox" type="checkbox" data-off-text="False" data-on-text="True" checked="false" class="BSswitch">
+  <label>This Switch is Set to
+      <label id="CheckBoxValue" value="None"></label>
+  </label>
+</form>
