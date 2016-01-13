@@ -1,0 +1,12 @@
+body {
+  width: 600px;
+  height: 600px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}

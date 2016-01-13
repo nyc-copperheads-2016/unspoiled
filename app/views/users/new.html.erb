@@ -1,0 +1,41 @@
+<div id="user-create-form">
+  <ul>
+  <%= form_for @user, role: "form" do |t| %>
+  <% if @user.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@user.errors.count, "error") %> prohibited
+       this article from being saved:
+     </h2>
+     <ul class="errors">
+       <% @user.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+   <% end %>
+  <div class="form-group">
+    <li class = "create-user"><%= t.label :username %></li>
+    <li><%= t.text_field :username %></li>
+  </div>
+
+  <div class="form-group">
+    <li class = "create-user"><%= t.label :password %></li>
+    <li><%= t.password_field :password %></li>
+  </div>
+
+  <div class="form-group">
+    <li class = "create-user" ><%= t.label :password_confirmation %></li>
+    <li><%= t.password_field :password_confirmation %></li>
+  </div>
+
+  <div class="form-group">
+    <li class = "create-user" ><%= t.label :email %></li>
+    <li><%= t.text_field :email %></li>
+  </div>
+
+    <li class="user-submit"><%= t.submit "create account" %></li>
+
+  <% end %>
+</div>
+

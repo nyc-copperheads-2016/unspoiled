@@ -1,0 +1,7 @@
+<% if logged_in? && current_user.id == params[:id].to_i %>
+    <%= render "users/preferences" %>
+  <% else %>
+    <div id="login-warning">
+      <p>This isn't your profile!</p>
+    </div>
+<% end %>
