@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :preferences
   has_many :filters, through: :preference, source: 'media'
 
-  validates :username, :password, :email, :active, presence: true
+  validates :username, :email, :active, presence: true
   validates_uniqueness_of :username, :email
   validates :username, length: { minimum: 4 }
   validates :password, length: { minimum: 6 }

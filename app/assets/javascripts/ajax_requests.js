@@ -125,10 +125,9 @@ $(document).ready(function(){
             imageUrl: '/assets/icon.png'});
       $('.wrapper').html(response)
     }).fail(function(response){
-      debugger
+      var errors = response.responseJSON.message
       swal({
-        title: "uh oh, something went"
-        + response.message,
+        title: errors[errors.length -1],
         type: 'warning',
         showCancelButton: false,
         confirmButtonColor:"#0F0051" ,
