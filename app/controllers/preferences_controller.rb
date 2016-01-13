@@ -10,6 +10,8 @@ class PreferencesController < ApplicationController
     if @preference.save
       if @mediaobj.category.category_type == "Movies"
         Preference.create_movie_words(@preference, @mediaobj.title)
+      elsif @mediaobj.category.category_type == "Custom"
+        Preference.words.create(word: params[:preference][:word])
       else
         Preference.create_tv_words(@preference, @mediaobj.title)
       end
