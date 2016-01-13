@@ -43,18 +43,6 @@ $(document).ready(function(){
     });
   });
 
-  // $('#filter-status').on('click', 'a', function(event){
-  //   event.preventDefault();
-  //   $.ajax({
-  //     url: event.target.href,
-  //     method: 'PUT'
-  //   }).done(function(response){
-  //     $('#filter-status').html(response);
-  //   }).fail(function(error){
-  //     console.log("fail :(", error)
-  //   })
-  // });
-
   $('#my-filter').on('click', 'a', function(event){
     event.preventDefault();
     $.ajax({
