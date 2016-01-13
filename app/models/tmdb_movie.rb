@@ -19,6 +19,3 @@ class TmdbMovie
 end
 
 
-
-# TmdbMovie.find_movies('Top Gun')
-# TmdbMovie.find_cast(744)

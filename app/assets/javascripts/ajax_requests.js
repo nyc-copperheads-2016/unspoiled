@@ -26,6 +26,7 @@ $(document).ready(function(){
           title: "Confirmed",
           text: response.message +" has been added",
           showConfirmButton: true,
+          confirmButtonColor: "#0F0051",
           allowOutsideClick: true,
           type: "success"
         });
@@ -35,6 +36,7 @@ $(document).ready(function(){
           title: "Error!",
           text: "You already added this filter",
           showConfirmButton: true,
+          confirmButtonColor: "#0F0051",
           allowOutsideClick: true,
           type: "error"
         });
@@ -64,7 +66,7 @@ $(document).ready(function(){
     })
   })
 
-  $('#category').on('click', "#on-off a", function(event){
+  $('.wrapper').on('click', "#on-off a", function(event){
     event.preventDefault();
     $.ajax({
       url: event.target.href,
@@ -80,37 +82,60 @@ $(document).ready(function(){
       })
     });
 
-    $('#category').on('click', "#delete-filter a", function(event){
-    event.preventDefault();
-    swal({   title: "Are you sure?",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: false,
-        cancelButtonText: "Cancel",
-        closeOnConfirm: false,
-        closeOnCancel: false
-         },
-    function(confirm){
-          if (confirm){
-            $.ajax({
-              url:event.target.href,
-              method: 'DELETE',
-              type: 'json'
-            }).done(function(response){
-              swal("Deleted!", "Filter was deleted", "success");
-              $("#filter-delete-{id}".supplant({id:response.id})).parent().parent().hide();
-            }).fail(function(error){
-              console.log("fail :(", error);
-            });
-          }
-          else{
-            swal('Cancelled', 'Filter not deleted', 'error');
-            return;
-          }
-      });
-  });
+    $('.wrapper').on('click', "#delete-filter a", function(event){
+      event.preventDefault();
+      swal({   title: "Are you sure?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#0F0051",
+          confirmButtonText: false,
+          cancelButtonText: "Cancel",
+          closeOnConfirm: false,
+          closeOnCancel: false
+           },
+      function(confirm){
+            if (confirm){
+              $.ajax({
+                url:event.target.href,
+                method: 'DELETE',
+                type: 'json'
+              }).done(function(response){
+                swal("Deleted!", "Filter was deleted", "success");
+                $("#filter-delete-{id}".supplant({id:response.id})).parent().parent().hide();
+              }).fail(function(error){
+                console.log("fail :(", error);
+              });
+            }
+            else{
+              swal('Cancelled', 'Filter not deleted', 'error');
+              return;
+            }
+        });
+    });
 
+  $('.new_user').on('submit',function(event){
+    event.preventDefault();
+    $.ajax({
+      url: event.target.action,
+      method: event.target.method,
+      data: $(event.target).serialize()
+    }).done(function(response){
+      swal({title: 'Welcome',
+            text: "Keep the stories you love unspoiled",
+            imageUrl: '/assets/icon.png'});
+      $('.wrapper').html(response)
+    }).fail(function(response){
+      var errors = response.responseJSON.message
+      swal({
+        title: errors[errors.length -1],
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor:"#0F0051" ,
+        confirmButtonText: false,
+      })
+      console.log("fail")
+    })
+  });
 });
 
 
