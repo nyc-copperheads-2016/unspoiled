@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/current_user', to: 'users#current_user'
 
   resources :users, only: [:new, :create, :show, :update] do
     resources :preferences
