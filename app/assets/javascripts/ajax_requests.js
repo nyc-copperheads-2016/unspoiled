@@ -1,7 +1,7 @@
 var loadToggle = function(){
 
   $.ajax({
-    url: "/current_user",
+    url: "/user_logged_in",
     method: "get",
     dataType: "json"
   }).done(function(response){
