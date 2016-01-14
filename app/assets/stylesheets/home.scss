@@ -47,6 +47,7 @@ text-decoration: none;
 
 .no-list-style {
   list-style: none;
+
 }
 
 .inline {
@@ -60,7 +61,12 @@ text-decoration: none;
   text-decoration: none;
   border-radius: 0;
   border: none;
+  .center {
+  margin-left: 41%;
+  float: none;
+  }
 }
+
 
 .btn.btn-default.btn-xs.submit-btn a {
   color: white;
@@ -146,6 +152,15 @@ h4 {
   box-shadow:         inset 0 0 10px #000000;
   text-decoration: none;
   border-radius: 0;
+}
+
+.no-button {
+  background: none;
+  border: none;
+}
+
+.filter-padding {
+  padding: 2%;
 }
 
 .btn-group .btn-primary:hover {

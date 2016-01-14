@@ -1,7 +1,13 @@
 <% if logged_in? %>
+<ul class="no-list-style">
   <%= form_for Media.new, url: category_media_index_path(params[:category_id]) do |t| %>
-    <li class="inline title">Enter the name of the filter:</li>
+    <li class="block title filter-padding">Enter the name of the filter:</li>
     <li class="inline text"><%= t.text_field :title %></li>
-    <li class="inline submit"><%= t.submit 'Add to filter', :html => { :style => 'background-color:red;'}, class: "btn btn-default btn-xs submit-btn"  %></li>
+
+    <div class="btn-group-md">
+    <button type="button" class="btn-xs btn-primary"><%= t.submit 'Add to filter', class: "no-button"  %>
+    </button>
+  </div>
   <% end %>
+</ul>
 <% end %>
