@@ -1,3 +1,8 @@
+
+a {
+text-decoration: none;
+}
+
 .col-centered{
     margin: auto;
     width: 70%;
@@ -20,13 +25,11 @@
 }
 
 .panel-heading {
-  background-color: #331B9D;
+  background-color: #210063;
   color: white;
   text-align: left;
   text-shadow: .5px 2px #0F0051;
-  -moz-box-shadow:    inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow:         inset 0 0 10px #000000;
+  border: 1px solid white;
 }
 
 .panel-body.noborder {
@@ -55,6 +58,8 @@
   color: white;
   float: right;
   text-decoration: none;
+  border-radius: 0;
+  border: none;
 }
 
 .btn.btn-default.btn-xs.submit-btn a {
@@ -84,7 +89,7 @@
 
 .footer {
     padding-top: 60px;
-    color: #337ABF;
+    color: #468ECB;
 }
 
 * {
@@ -93,6 +98,9 @@
 
 html, body {
   height: 100%;
+}
+h4 {
+  margin-top: -3%
 }
 
 .wrapper {
@@ -108,13 +116,16 @@ html, body {
 }
 
 .footer a{
-  color: #337AB7;
+  text-decoration: none;
+  color: #210063;
 }
 
+.bootstrap-switch-handle-on.bootstrap-switch-handle-off {
+  color: #428bca;
+}
 
 .tagline a {
   color: #337AB7;
-  text-shadow: .5px .5px #0F0051;
   text-decoration: none;
 }
 
@@ -135,6 +146,7 @@ html, body {
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow:         inset 0 0 10px #000000;
   text-decoration: none;
+  border-radius: 0;
 }
 
 .btn-group .btn-primary:hover {
@@ -144,14 +156,18 @@ html, body {
 }
 
 .btn-primary a:hover {
-  background-color: #468ecb;
-  font-weight: bold;
   text-decoration: none;
 }
 .btn-primary a {
   border: .5px solid #514800;
   color: white;
   text-decoration: none;
+}
+
+.btn-primary {
+  margin-top: 2%;
+  border-radius: 0;
+  border: none;
 }
 .submit-btn {
   color: white;
@@ -161,16 +177,15 @@ html, body {
 
 @media (max-width: 600px) {
   .tagline a {
-    font-size: 0.60em;
+    font-size: 1em;
   }
 
   .tagline a:hover {
-    font-size: 0.60em;
     text-decoration: none;
   }
 
   .tagline a:active {
-    font-size: 0.60em;
+    color: #210063;
     text-decoration: none;
   }
 }
@@ -200,5 +215,8 @@ button.btn.btn-default{
 }
 
 
-
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
+  background-color: #428bca;
+  color: white;
+}
 
