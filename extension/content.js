@@ -1,6 +1,6 @@
 var loggedOn = false;
 function loggedIn() {
-  // $.get("https://serene-garden-3411.herokuapp.com/user_logged_in", function(data) {
+  // $.get("https://thawing-badlands-1060.herokuapp.com/user_logged_in", function(data) {
     $.get("http://localhost:3000/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
