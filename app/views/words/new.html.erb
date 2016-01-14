@@ -1,5 +1,7 @@
-<%= form_for Word.new, url: media_words_path(params[:media_id]) do |t| %>
-  <li class="inline title">Enter the words you want to filter out:</li>
-  <li class="inline text"><%= t.text_field :word %></li>
-  <li class="inline submit"><%= t.submit 'Add filters' %></li>
-<% end %>
+<div class="category">
+  <%= form_for Word.new, url: media_words_path(params[:media_id]) do |t| %>
+    <li class="inline title">Enter the words you want to filter out:</li>
+    <li class="inline text"><%= t.text_field :word %></li>
+    <li class="inline submit"><%= t.submit 'Add filters' %></li>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<div id = "category">
+<div class = "category">
 <% @categories.each do |category| %>
     <div class="panel-heading" >
         <a class="panel-title" data-toggle="collapse" href="#collapse<%= category.category_type.gsub(/[^0-9a-z]/i, '')%>"><%= category.category_type %></a>

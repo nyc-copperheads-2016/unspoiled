@@ -65,10 +65,11 @@ $(document).ready(function(){
 
   $('#my-filter').on('click', 'a', function(event){
     event.preventDefault();
+
     $.ajax({
       url: event.target.href,
     }).done(function(response){
-      $('#category').html(response);
+      $('.category').html(response);
     }).fail(function(error){
       console.log("fail :(", error)
     })
