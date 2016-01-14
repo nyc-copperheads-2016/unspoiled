@@ -1,6 +1,6 @@
 var loggedOn = false;
 function loggedIn() {
-  $.get("https://thawing-badlands-1060.herokuapp.com/user_logged_in", function(data) {
+  $.get("https://keepunspoiled.herokuapp.com/user_logged_in", function(data) {
     // $.get("http://localhost:3000/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
@@ -18,7 +18,7 @@ function loggedIn() {
 }
 
 function setFilter() {
-  $.get("https://thawing-badlands-1060.herokuapp.com/filtered_words", function(data) {
+  $.get("https://keepunspoiled.herokuapp.com/filtered_words", function(data) {
   // $.get("http://localhost:3000/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
     chrome.storage.local.get(function(obj) {
@@ -51,7 +51,7 @@ function hideWord(tags) {
     array_of_words.forEach(function(word){
       if (node.wholeText.toLowerCase().match(word) != null) {
         $(node.parentNode).hide()
-        $(node.parentNode).parent().append('<a class= "meep" href="#" style="color: white; background-color: purple; border: 3px solid lightblue; width: 200px;">Unspoiled (click to show spoiler)</a>')
+        $(node.parentNode).parent().append('<a class= "meep" href="#" style="color: white; background-color: #0F0051; border: 3px solid lightblue; width: 200px;">Unspoiled (click to show spoiler)</a>')
       }
     })
   });
