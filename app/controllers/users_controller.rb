@@ -66,11 +66,6 @@ class UsersController < ApplicationController
     list_of_words
   end
 
-  def current_user
-    current_user= User.find(session[:user_id])
-    render :json => {active:current_user.active, id: current_user.id}
-  end
-
 
   private
   def user_params

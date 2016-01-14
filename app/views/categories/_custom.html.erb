@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <%= form_for :word, :html => {:class => "new_preference filter form-inline"}, url: user_preferences_path(current_user.id) do |t| %>
+    <li class="inline"><%= t.hidden_field :media_title, value: media.title %></li>
+    <li class="inline title">Custom Filter</li>
+    <li class="inline submit"><%= t.submit 'Add to filter', :html => { :style => 'background-color:red;'}, class: "btn btn-default btn-xs submit-btn"  %></li>
+  <% end %>
+<% end %>

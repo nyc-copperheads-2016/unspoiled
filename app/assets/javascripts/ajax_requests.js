@@ -1,7 +1,7 @@
 var loadToggle = function(){
 
   $.ajax({
-    url: "/current_user",
+    url: "/user_logged_in",
     method: "get",
     dataType: "json"
   }).done(function(response){
@@ -65,10 +65,11 @@ $(document).ready(function(){
 
   $('#my-filter').on('click', 'a', function(event){
     event.preventDefault();
+
     $.ajax({
       url: event.target.href,
     }).done(function(response){
-      $('#category').html(response);
+      $('.category').html(response);
     }).fail(function(error){
       console.log("fail :(", error)
     })

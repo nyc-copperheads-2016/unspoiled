@@ -4,12 +4,18 @@ class PreferencesController < ApplicationController
 
   def create
     @mediaobj = Media.find_by(id: params[:preference][:media_id])
+    if !@mediaobj
+      category = Category.find_by(category_type: "Custom")
+      @mediaobj = Media.create!(title: params[:preference][:word], category: category)
+    end
     @category = Category.find_by(id: @mediaobj.category_id )
     @categories = Category.all
     @preference = Preference.new(user: current_user, media: @mediaobj)
     if @preference.save
       if @mediaobj.category.category_type == "Movies"
         Preference.create_movie_words(@preference, @mediaobj.title)
+      elsif @mediaobj.category.category_type == "Custom"
+        Preference.words.create(word: params[:preference][:word])
       else
         Preference.create_tv_words(@preference, @mediaobj.title)
       end

@@ -1,0 +1,10 @@
+<div class="category">
+  <%= form_for Word.new, url: media_words_path(params[:media_id]) do |t| %>
+    <li class="block title filter-padding">Enter the words you want to filter out:</li>
+    <li class="inline text"><%= t.text_field :word %></li>
+    <div class="btn-group-md">
+      <button type="button" class="btn-xs btn-primary">
+        <%= t.submit 'Add filters', class: "no-button" %></button>
+    </div>
+  <% end %>
+</div>
