@@ -1,5 +1,25 @@
+var loadToggle = function(){
+
+  $.ajax({
+    url: "/current_user",
+    method: "get",
+    dataType: "json"
+  }).done(function(response){
+    var toggle = $('#TheCheckBox');
+    if (response.active === false){
+      toggle.bootstrapSwitch('state', false);
+    }
+   }).fail(function(error){
+    console.log(error);
+  })
+};
+
+
 
 $(document).ready(function(){
+
+  loadToggle();
+
 
   String.prototype.supplant = function (o) {
       return this.replace(/{([^{}]*)}/g,
@@ -125,12 +145,16 @@ $(document).ready(function(){
     })
   });
 
+
   $("#TheCheckBox").on("switchChange.bootstrapSwitch",function(event){
      event.preventDefault();
+     var user_id = $('#TheCheckBox').attr('data-user')
+     a=event.target.checked
 
     $.ajax({
-      url: "http://localhost:3000/users/3",
-      method: 'put'
+      url: "/users/" + user_id,
+      method: 'put',
+      data: {status:a.toString()}
     }).done(function(response){
       console.log(response.message)
     }).fail(function(error){

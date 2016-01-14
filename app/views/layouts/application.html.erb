@@ -13,24 +13,53 @@
 
           <div class="col-centered text-right">
     <% if logged_in? %>
-      <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div id = "filter-status" class="btn-group" role="group">
-          <%= render partial: '/users/filterstatus' %>
-        </div>
-        <div id = "my-filter" class="btn-group" role="group">
+
+    <hr>
+
+    <div class="btn-group-md">
+
+      <button type="button" class="btn btn-primary">
+        Unspoiled is:
+        <input class="btn-group" role="group"
+        data-text="user-master-filter"
+        id="TheCheckBox"
+        type="checkbox"
+        data-off-text="Off"
+        data-size="mini"
+        data-on-text="On"
+        class="BSswitch" data-user= <%= current_user.id  %>
+        checked>
+      </button>
+
+      <button type="button" class="btn btn-primary">
+        <div id = "my-filter">
           <%= render partial: '/users/myfilter' %>
         </div>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default"><%= link_to 'Logout', logout_path(current_user.id), method: "delete" %></button>
-        </div>
-      </div>
-    <% else %>
-    <div class="btn-group btn-group-justified">
-      <div class="btn btn-primary"><%= link_to "Login", new_session_path  %></div>
-      <div class="btn btn-primary" role="group"><%= link_to "Create Account", new_user_path %></div>
+      </button>
+
+      <button type="button" class="btn btn-primary">
+        <%= link_to "Logout", logout_path(current_user), method: "delete"  %>
+      </button>
+
     </div>
 
+    <% else %>
+
+    <div class="btn-group-md">
+
+      <button type="button" class="btn btn-primary">
+        <%= link_to "Login", new_session_path  %>
+      </button>
+
+      <button type="button" class="btn btn-primary">
+        <%= link_to "Create Account", new_user_path %>
+      </button>
+
+    </div>
     <% end %>
+
+    <hr>
+
 
 
 <%= yield %>
@@ -44,8 +73,6 @@
 </div>
 
 
- <label id="switch" ><input id="TheCheckBox" type="checkbox" data-off-text="Off" data-on-text="On" checked="true"  class="BSswitch">
- </label>
 
 
 

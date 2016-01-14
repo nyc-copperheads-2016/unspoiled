@@ -34,30 +34,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.active == true
-      @user.update_attribute(:active, false)
-      if request.xhr?
-        render :json => {message: @user.active}
-        # render partial: '/users/filterstatus', layout: false
-      else
-       redirect_to root_path
-      end
+    status = params[:status]
+
+    if status == "true"
+      status = true
     else
-      @user.update_attribute(:active, true)
-      if request.xhr?
-        render :json => {message: @user.active}
-        # render partial: '/users/filterstatus', layout: false
-      else
-        redirect_to root_path
-      end
+      status = false
     end
+
+    @user.update_attribute(:active, status )
+    render :json => {message: @user.active}
   end
 
   def filtered_words
     if current_user
       pref = Preference.where(active: true).where('preferences.user_id = ?',current_user.id )
       filters = active_words(pref)
-      # filters = Word.joins(:preference).where('preferences.user_id = ?', current_user.id).pluck(:word)
     else
       filters = []
     end
@@ -72,6 +64,11 @@ class UsersController < ApplicationController
       end
     end
     list_of_words
+  end
+
+  def current_user
+    current_user= User.find(session[:user_id])
+    render :json => {active:current_user.active, id: current_user.id}
   end
 
 
