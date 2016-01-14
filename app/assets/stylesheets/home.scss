@@ -134,7 +134,6 @@ h4 {
   text-decoration: none;
 }
 .tagline a:focus {
-  color: white;
   text-decoration: none;
 }
 
@@ -196,9 +195,12 @@ h4 {
 }
 
 #user-preferences{
-  background-color: #939393;
-  border: 2px solid #331B9D;
-  margin-top: 10px;
+  h2 {
+    margin-bottom: 5%;
+  }
+  strong {
+  color: #337AB7;
+  }
 }
 
 #category{
@@ -211,8 +213,8 @@ button.btn.btn-default{
 
 
 #username{
-  border-bottom: 2px solid #331B9D
 }
+
 
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
