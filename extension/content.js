@@ -1,7 +1,6 @@
 var loggedOn = false;
 function loggedIn() {
   $.get("https://keepunspoiled.herokuapp.com/user_logged_in", function(data) {
-    // $.get("http://localhost:3000/user_logged_in", function(data) {
     if (data) {
       sessionStorage.loggedIn = true
     }
@@ -19,7 +18,6 @@ function loggedIn() {
 
 function setFilter() {
   $.get("https://keepunspoiled.herokuapp.com/filtered_words", function(data) {
-  // $.get("http://localhost:3000/filtered_words", function(data) {
     chrome.storage.local.set({filter: data});
     chrome.storage.local.get(function(obj) {
       if (sessionStorage.loggedIn === "true"){
