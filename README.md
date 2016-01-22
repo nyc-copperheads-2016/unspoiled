@@ -7,7 +7,7 @@ Unspoiled is a Google Chrome extension that blocks all narrative outcome referen
 ## Developed by
 [Ryan Lesson](http://www.github.com/bigless27), [Arcangelo Petretta](http://www.github.com/arcpetretta), [Jack Huang](http://www.github.com/jackhuang7), and [Eliza Dunaway](http://www.github.com/elizaway)
 
-* Ruby version
+## Ruby version
 Version 2.23
 
 ## Technical Details
